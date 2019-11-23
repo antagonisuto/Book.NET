@@ -33,7 +33,7 @@ namespace FinalProjectTest
             },
             equipment =>
             {
-                Assert.Equal("test user 1", equipment.Username);
+                Assert.Equal("test user 2", equipment.Username);
             });
         }
 
@@ -95,7 +95,7 @@ namespace FinalProjectTest
 
             await equipmentService.UpdateAndSave(newuser2);
 
-            Assert.Equal("test user 1", users[1].Username);
+            Assert.Equal("test user 2", users[1].Username);
         }
 
         [Fact]

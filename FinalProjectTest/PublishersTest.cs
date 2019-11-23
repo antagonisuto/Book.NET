@@ -90,7 +90,7 @@ namespace FinalProjectTest
 
             await pubService.UpdateAndSave(newpub2);
 
-            Assert.Equal("new test pub 2", pubs[1].Pub_name);
+            Assert.Equal("test pub 2", pubs[1].Pub_name);
         }
 
         [Fact]
@@ -109,7 +109,7 @@ namespace FinalProjectTest
             await pubService.DeleteAndSave(pub2.Pub_id);
 
             Assert.Single(pubs);
-            Assert.Equal("new test pub 1", pubs[0].Pub_name);
+            Assert.Equal("test pub 1", pubs[0].Pub_name);
         }
 
         [Fact]

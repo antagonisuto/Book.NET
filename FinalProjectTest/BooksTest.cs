@@ -95,7 +95,7 @@ namespace FinalProjectTest
 
             await BooksService.UpdateAndSave(newBooks2);
 
-            Assert.Equal("test Books 1", books[1].Book_title);
+            Assert.Equal("test Books 2", books[1].Book_title);
         }
 
         [Fact]

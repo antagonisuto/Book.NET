@@ -97,7 +97,7 @@ namespace FinalProjectTest
 
             await courseMemberService.UpdateAndSave(newCourseMember2);
 
-            Assert.Equal(1, BHAs[1].Book_id);
+            Assert.Equal(2, BHAs[1].Book_id);
         }
 
         [Fact]

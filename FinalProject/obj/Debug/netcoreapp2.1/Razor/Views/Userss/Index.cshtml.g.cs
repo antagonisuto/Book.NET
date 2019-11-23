@@ -71,7 +71,7 @@ Write(title);
             WriteLiteral("</h2>\r\n\r\n<h3>");
             EndContext();
             BeginContext(407, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b89b60d597a4f11b4a049ea1390f2b2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36c71c41c94c459495ed298d1ec40811", async() => {
                 BeginContext(463, 6, true);
                 WriteLiteral("Create");
                 EndContext();
@@ -170,7 +170,7 @@ Write(title);
             WriteLiteral("</td>\r\n\r\n                    <td>");
             EndContext();
             BeginContext(1155, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "580fcd672d3c43c2a1baf99950404ea0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a569c82b37fa4e97bd4046d29937d65b", async() => {
                 BeginContext(1204, 6, true);
                 WriteLiteral("Update");
                 EndContext();
@@ -205,7 +205,7 @@ Write(title);
             WriteLiteral("</td>\r\n                    <td>\r\n                        ");
             EndContext();
             BeginContext(1271, 152, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e9b9a0c68d48b3ad6d0ce40e1d280b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b3652da6d260455681b4ca56cc5441eb", async() => {
                 BeginContext(1337, 79, true);
                 WriteLiteral("\r\n                            <button>Delete</button>\r\n                        ");
                 EndContext();

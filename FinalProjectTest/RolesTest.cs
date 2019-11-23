@@ -109,7 +109,7 @@ namespace FinalProjectTest
             await roleService.DeleteAndSave(member2.Role_id);
 
             Assert.Single(members);
-            Assert.Equal("new test role 1", members[0].Role_name);
+            Assert.Equal("test role 1", members[0].Role_name);
         }
 
         [Fact]
