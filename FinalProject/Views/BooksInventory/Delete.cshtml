@@ -1,0 +1,26 @@
+﻿@model FinalProject.Models.BooksInventory
+
+
+@{
+    Layout = "_Layout";
+    var title = "Delete BooksInventory";
+    ViewData["Title"] = title;
+}
+
+    <h4>@title</h4>
+
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Book_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User_id)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Book_id" />
+        <input type="hidden" asp-for="User_id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>

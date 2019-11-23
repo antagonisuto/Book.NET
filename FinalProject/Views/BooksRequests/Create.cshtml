@@ -1,0 +1,31 @@
+﻿@model FinalProject.Models.BooksRequests
+
+@{
+    Layout = "_Layout";
+    var title = "CREATE BooksRequests";
+    ViewData["Title"] = title;
+}
+
+
+<h2>@title</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form class="m-1 p-1" method="post">
+    <div class="form-group">
+        <label asp-for="Book_id"></label>
+        <input asp-for="Book_id" class="form-control" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="User_id"></label>
+        <input asp-for="User_id" class="form-control" type="number" />
+       
+    </div>
+    <div class="form-group">
+        <label asp-for="RequestDate"></label>
+        <input asp-for="RequestDate" class="form-control" type="datetime" />
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

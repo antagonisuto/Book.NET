@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FinalProject.Models.Userss>
+
+@{
+    Layout = "_Layout";
+    var title = "READ Userss";
+    ViewData["Title"] = title;
+}
+
+<!---
+        public int User_id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string FullName { get; set; }
+
+        public int Role_id { get; set; }-->
+
+<h2>@title</h2>
+
+<h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>
+<table class="table table-bordered table-sm table-striped">
+    <thead>
+        <tr><th>Id</th><th>UserName</th><th>Password</th><th>FullName</th><th>Update</th><th>Delete</th></tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            <tr><td colspan="7" class="text-center">No Model Data</td></tr>
+        }
+        else
+        {
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.User_id</td>
+                    <td>@p.Username</td>
+                    <td>@p.Password</td>
+                    <td>@p.FullName</td>
+                    <td>@p.Role_id</td>
+
+                    <td><a asp-action="Update" asp-route-id="@p.User_id">Update</a></td>
+                    <td>
+                        <form asp-action="Delete" method="post" asp-route-id="@p.User_id">
+                            <button>Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table> 

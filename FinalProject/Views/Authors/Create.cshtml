@@ -1,0 +1,21 @@
+﻿@model FinalProject.Models.Authors
+
+@{
+    Layout = "_Layout";
+    var title = "CREATE Authors";
+    ViewData["Title"] = title;
+}
+
+
+<link href="css/bootstrap.css" rel="stylesheet" />
+<h2>@title</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form class="m-1 p-1" method="post">
+    <div class="form-group">
+        <label asp-for="Author_name"></label>
+        <input asp-for="Author_name" class="form-control" />
+        <span asp-validation-for="Author_name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

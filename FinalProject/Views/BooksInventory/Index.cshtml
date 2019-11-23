@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FinalProject.Models.BooksInventory>
+
+@{
+Layout = "_Layout";
+var title = "READ BooksInventory";
+ViewData["Title"] = title;
+}
+
+
+<a asp-action="Create">Create New</a>
+
+<table class="table table-bordered table-sm table-striped">
+    <thead>
+        <tr>
+            <th>
+               Book Name
+            </th>
+            <th>
+                Inventory
+            </th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Book_title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FullName)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Update", "Update", new { id1 = item.Book_id, id2 = item.User_id })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id1 = item.Book_id, id2 = item.User_id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

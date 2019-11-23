@@ -1,0 +1,47 @@
+﻿@model FinalProject.Models.Userss
+
+@{
+    Layout = "_Layout";
+    var title = "UPDATE Userss";
+    ViewData["Title"] = title;
+}
+
+<!---
+        public int User_id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string FullName { get; set; }
+
+        public int Role_id { get; set; }-->
+
+<h2>@title</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form class="m-1 p-1" method="post">
+    <div class="form-group">
+        <label asp-for="User_id"></label>
+        <input asp-for="User_id" class="form-control" />
+        <span asp-validation-for="User_id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Username"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Role_id"></label>
+        <input asp-for="Role_id" class="form-control" />
+        <span asp-validation-for="Role_id" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

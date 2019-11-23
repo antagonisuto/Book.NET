@@ -1,0 +1,24 @@
+﻿@model FinalProject.Models.BooksHaveAuthors
+
+@{
+    Layout = "_Layout";
+    var title = "UPDATE BooksHaveAuthors";
+    ViewData["Title"] = title;
+}
+
+
+<h2>@title</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form asp-action="Update" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label id="Book_id" name="Book_id" class="control-label">Book_id</label>
+        <input id="Book_id" name="Book_id" class="form-control" value="@Model.Book_id" />
+    </div>
+    <div class="form-group">
+        <label id="Author_id" name="Author_id" class="control-label">Author_id</label>
+        <input id="Author_id" name="Author_id" class="form-control" value="@Model.Author_id" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> 

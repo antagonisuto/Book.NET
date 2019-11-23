@@ -1,0 +1,51 @@
+﻿@model FinalProject.Models.Books
+
+@{
+    Layout = "_Layout";
+    var title = "CREATE Roles";
+    ViewData["Title"] = title;
+}
+
+<!---        public int Book_id { get; set; }
+        public string Book_title { get; set; }
+        public int Book_page { get; set; }
+        public DateTime Book_pub { get; set; }
+        public string Book_shortDec { get; set; }
+        public string Book_dec { get; set; }-->
+
+<h2>@title</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form class="m-1 p-1" method="post">
+    <div class="form-group">
+        <label asp-for="Book_title"></label>
+        <input asp-for="Book_title" class="form-control" />
+        <span asp-validation-for="Book_title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Book_page"></label>
+        <input asp-for="Book_page" class="form-control" type="number" />
+        <span asp-validation-for="Book_page" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Book_pub"></label>
+        <input asp-for="Book_pub" class="form-control" type="datetime" />
+        <span asp-validation-for="Book_title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Book_shortDec"></label>
+        <input asp-for="Book_shortDec" class="form-control" />
+        <span asp-validation-for="Book_title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Book_dec"></label>
+        <input asp-for="Book_dec" class="form-control" />
+        <span asp-validation-for="Book_dec" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Pub_id"></label>
+        <select asp-for="Pub_id" class="form-control" asp-items="ViewBag.Pub_id"></select>
+        <span asp-validation-for="Pub_id" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

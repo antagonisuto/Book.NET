@@ -1,0 +1,20 @@
+﻿@model FinalProject.Models.Publishers
+
+@{
+    Layout = "_Layout";
+    var title = "CREATE Publisher";
+    ViewData["Title"] = title;
+}
+
+<h2>@title</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form class="m-1 p-1" method="post">
+    <div class="form-group">
+        <label asp-for="Pub_name"></label>
+        <input asp-for="Pub_name" class="form-control" />
+        <span asp-validation-for="Pub_name" class="text-danger"></span>
+    </div>
+    @Html.ValidationMessageFor(model => model.Pub_name, "", new { @class = "text-danger" })
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

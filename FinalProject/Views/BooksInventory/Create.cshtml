@@ -1,0 +1,24 @@
+﻿@model FinalProject.Models.BooksInventory
+
+@{
+    Layout = "_Layout";
+    var title = "CREATE BooksInventory";
+    ViewData["Title"] = title;
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Book_id" class="control-label"></label>
+                <select asp-for="Book_id" class="form-control" asp-items="ViewBag.Book_id"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="User_id" class="control-label"></label>
+                <select asp-for="User_id" class="form-control" asp-items="ViewBag.User_id"></select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

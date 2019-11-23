@@ -1,0 +1,40 @@
+﻿@model IEnumerable<FinalProject.Models.BooksRequests>
+
+@{
+    Layout = "_Layout";
+    var title = "READ BooksRequests";
+    ViewData["Title"] = title;
+}
+
+
+<h2>@title</h2>
+
+<h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>
+<table class="table table-bordered table-sm table-striped">
+    <thead>
+        <tr><th>Id</th><th>User_Id</th><th>Request Date</th><th>Update</th><th>Delete</th></tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            <tr><td colspan="7" class="text-center">No Model Data</td></tr>
+        }
+        else
+        {
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.Book_id</td>
+                    <td>@p.User_id</td>
+                    <td>@string.Format("{0:dddd, dd MMMM yyyy}", p.RequestDate)</td>
+                    
+                    <td>@Html.ActionLink("Update", "Update", new { id1 = p.Book_id, id2 = p.User_id })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id1 = p.Book_id, id2 = p.User_id })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table> 
