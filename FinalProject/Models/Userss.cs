@@ -4,11 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Net.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject.Models
 {
-    public class Userss
+    public class Userss : IdentityUser
+
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -28,9 +30,9 @@ namespace FinalProject.Models
         [NotContainsDigits]
         public string FullName { get; set; }
 
-        public int? Role_id { get; set; }
-        [ForeignKey("Role_id")]
-        public virtual Roles Role { get; set; }
+        //public int? Role_id { get; set; }
+        //[ForeignKey("Role_id")]
+        //public virtual Roles Role { get; set; }
 
         public virtual ICollection<BooksRequests> BooksRequests { get; set; }
         public virtual ICollection<BooksInventory> BooksInventories { get; set; }

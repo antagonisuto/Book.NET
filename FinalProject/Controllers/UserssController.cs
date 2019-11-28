@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using FinalProject.Data;
 using FinalProject.Models;
 using FinalProject.Services.Userss;
+using FinalProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,39 +16,44 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserssController : Controller
     {
         private readonly UserssService _service;
+        private readonly UserManager<Userss> _userManager;
 
-        public UserssController(UserssService service)
+        public UserssController(UserssService service, UserManager<Userss> userManager)
         {
             _service = service;
+            _userManager = userManager;
         }
 
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-            return View(await _service.GetAllUsers());
+            //return View(await _service.GetAllUsers());
+            var users = await _service.GetAll();
+            return View(users);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            ViewData["Role_id"] = new SelectList(await _service.GetAllRoles(), "Role_id", "Role_idd");
+            //ViewData["Role_id"] = new SelectList(await _service.GetAllRoles(), "Role_id", "Role_idd");
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateAsync([Bind("User_id,Username,Password,FullName,Role_id")] Userss user)
-        {
-            if (ModelState.IsValid)
-            {
-                await _service.AddAndSave(user);
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["Role_id"] = new SelectList(await _service.GetAllRoles(), "Role_id", "Role_idd", user.Role_id);
-            return View(user);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("User_id,Username,Password,FullName")] Userss user)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        await _service.AddAndSave(user);
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    //ViewData["Role_id"] = new SelectList(await _service.GetAllRoles(), "Role_id", "Role_idd", user.Role_id);
+        //    return View(user);
+        //}
 
 
         // GET: Equipment/Edit/5
@@ -61,14 +69,14 @@ namespace FinalProject.Controllers
             {
                 return NotFound();
             }
-            ViewData["Role_id"] = new SelectList(await _service.GetAllRoles(), "Role_id", "Role_idd", user.Role_id);
+            //ViewData["Role_id"] = new SelectList(await _service.GetAllRoles(), "Role_id", "Role_idd", user.Role_id);
             return View(user);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, [Bind("User_id,Username,Password,FullName,Role_id")]  Userss user)
+        public async Task<IActionResult> Update(int id, [Bind("User_id,Username,Password,FullName")]  Userss user)
         {
             if (id != user.User_id)
             {
@@ -94,7 +102,7 @@ namespace FinalProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoomId"] = new SelectList(await _service.GetAllRoles(), "Role_id", "Role_id", user.Role_id);
+            //ViewData["RoomId"] = new SelectList(await _service.GetAllRoles(), "Role_id", "Role_id", user.Role_id);
             return View(user);
         }
 
@@ -106,7 +114,32 @@ namespace FinalProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        
+        public async Task<IActionResult> Create(RegisterViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var user = new Userss
+                {
+                    Username = model.Email,
+                    FullName = model.Full_Name,
+                };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                //await _usersService.AddAndSave(user);
+                //return RedirectToAction(nameof(Index));
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("index", "/Userss");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+            return View(model);
+        }
+
+
         ////VerifyUsername
         //[AcceptVerbs("Get", "Post")]
         //public IActionResult VerifyUsername(string username)

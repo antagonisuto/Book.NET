@@ -13,7 +13,6 @@
     <Folder Include="Views\Main\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\css\" />
-    <Folder Include="Views\Roles\" />
     <Folder Include="Views\Authors\" />
     <Folder Include="Views\Books\" />
     <Folder Include="Views\BooksHaveAuthors\" />
@@ -26,11 +25,11 @@
     <Folder Include="Services\Authors\" />
     <Folder Include="Services\Books\" />
     <Folder Include="Services\Publishers\" />
-    <Folder Include="Services\ Roles\" />
     <Folder Include="Services\Userss\" />
     <Folder Include="Services\BooksHaveAuthors\" />
     <Folder Include="Services\BooksInventory\" />
     <Folder Include="Services\BooksRequests\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>

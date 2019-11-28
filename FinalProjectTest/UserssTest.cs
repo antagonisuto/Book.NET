@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FinalProject.Models;
-using FinalProject.Services.Roles;
 using FinalProject.Services.Userss;
 using Moq;
 using Xunit;
@@ -14,18 +13,18 @@ namespace FinalProjectTest
         [Fact]
         public async Task GetAllTest()
         {
-            var user1 = new Userss() { User_id = 1, Username = "test user 1", Password = "test password 1", FullName = "test FullName 1", Role_id = 1 };
-            var user2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1", Role_id = 2 };
+            var user1 = new Userss() { User_id = 1, Username = "test user 1", Password = "test password 1", FullName = "test FullName 1"};
+            var user2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1"};
             var users = new List<Userss> { user1, user2 };
 
             var fakeUserssRepositoryMock = new Mock<IUserssRepository>();
-            var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
+            //var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
 
             fakeUserssRepositoryMock.Setup(x => x.GetAll()).ReturnsAsync(users);
 
-            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object, fakeRolesRepositoryMock.Object);
+            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object);
 
-            var resultUserss = await equipmentService.GetAllUsers();
+            var resultUserss = await equipmentService.GetAll();
 
             Assert.Collection(resultUserss, equipment =>
             {
@@ -40,15 +39,15 @@ namespace FinalProjectTest
         [Fact]
         public async Task GetByIdTest()
         {
-            var user1 = new Userss() { User_id = 1, Username = "test user 1", Password = "test password 1", FullName = "test FullName 1", Role_id = 1 };
-            var user2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1", Role_id = 2 };
+            var user1 = new Userss() { User_id = 1, Username = "test user 1", Password = "test password 1", FullName = "test FullName 1"};
+            var user2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1"};
 
             var fakeUserssRepositoryMock = new Mock<IUserssRepository>();
-            var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
+            //var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
 
-            fakeUserssRepositoryMock.Setup(x => x.GetByID(1)).ReturnsAsync(user1);
+            //fakeUserssRepositoryMock.Setup(x => x.GetByID(1)).ReturnsAsync(user1);
 
-            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object, fakeRolesRepositoryMock.Object);
+            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object);
 
             var result = await equipmentService.GetById(1);
 
@@ -58,18 +57,18 @@ namespace FinalProjectTest
         [Fact]
         public async Task AddAndSaveTest()
         {
-            var user1 = new Userss() { User_id = 1, Username = "test user 1", Password = "test password 1", FullName = "test FullName 1", Role_id = 1 };
-            var user2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1", Role_id = 2 };
+            var user1 = new Userss() { User_id = 1, Username = "test user 1", Password = "test password 1", FullName = "test FullName 1"};
+            var user2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1"};
             var users = new List<Userss> { user1, user2 };
 
-            var user3 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1", Role_id = 2 };
+            var user3 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1"};
 
             var fakeUserssRepositoryMock = new Mock<IUserssRepository>();
-            var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
+            //var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
 
             fakeUserssRepositoryMock.Setup(x => x.Add(It.IsAny<Userss>())).Callback<Userss>(arg => users.Add(arg));
 
-            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object, fakeRolesRepositoryMock.Object);
+            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object);
 
             await equipmentService.AddAndSave(user3);
 
@@ -80,18 +79,18 @@ namespace FinalProjectTest
         [Fact]
         public async Task UpdateAndSaveTest()
         {
-            var user1 = new Userss() { User_id = 1, Username = "test user 1", Password = "test password 1", FullName = "test FullName 1", Role_id = 1 };
-            var user2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1", Role_id = 2 };
+            var user1 = new Userss() { User_id = 1, Username = "test user 1", Password = "test password 1", FullName = "test FullName 1"};
+            var user2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1"};
             var users = new List<Userss> { user1, user2 };
 
-            var newuser2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1", Role_id = 2 };
+            var newuser2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1"};
 
             var fakeUserssRepositoryMock = new Mock<IUserssRepository>();
-            var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
+            //var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
 
             fakeUserssRepositoryMock.Setup(x => x.Update(It.IsAny<Userss>())).Callback<Userss>(arg => users[1] = arg);
 
-            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object, fakeRolesRepositoryMock.Object);
+            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object);
 
             await equipmentService.UpdateAndSave(newuser2);
 
@@ -101,16 +100,16 @@ namespace FinalProjectTest
         [Fact]
         public async Task DeleteAndSaveTest()
         {
-            var user1 = new Userss() { User_id = 1, Username = "test user 1", Password = "test password 1", FullName = "test FullName 1", Role_id = 1 };
-            var user2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1", Role_id = 2 };
+            var user1 = new Userss() { User_id = 1, Username = "test user 1", Password = "test password 1", FullName = "test FullName 1"};
+            var user2 = new Userss() { User_id = 2, Username = "test user 2", Password = "test password 2", FullName = "test FullName 1"};
             var users = new List<Userss> { user1, user2 };
 
             var fakeUserssRepositoryMock = new Mock<IUserssRepository>();
-            var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
+            //var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
 
             fakeUserssRepositoryMock.Setup(x => x.Delete(It.IsAny<int>())).Callback<int>(arg => users.RemoveAt(1));
 
-            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object, fakeRolesRepositoryMock.Object);
+            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object);
 
             await equipmentService.DeleteAndSave(user2.User_id);
 
@@ -122,11 +121,11 @@ namespace FinalProjectTest
         public void ExistsTest()
         {
             var fakeUserssRepositoryMock = new Mock<IUserssRepository>();
-            var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
+            //var fakeRolesRepositoryMock = new Mock<IRolesRepository>();
 
             fakeUserssRepositoryMock.Setup(x => x.UserExists(It.IsAny<int>())).Returns(true);
 
-            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object, fakeRolesRepositoryMock.Object);
+            var equipmentService = new UserssService(fakeUserssRepositoryMock.Object);
 
             bool result = equipmentService.UserExists(1);
 

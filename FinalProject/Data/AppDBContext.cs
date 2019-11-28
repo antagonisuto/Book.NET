@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Data;
 using FinalProject.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Data
 {
-    public class AppDBContext : DbContext
+    public class AppDBContext : IdentityDbContext
     {
 
         public AppDBContext(DbContextOptions options) : base(options)
@@ -17,7 +18,7 @@ namespace FinalProject.Data
         public DbSet<Authors> Authors { get; set; }
         public DbSet<Books> Books { get; set; }
         public DbSet<Publishers> Publishers { get; set; }
-        public DbSet<Roles> Roles { get; set; }
+        //public DbSet<Roles> Roles { get; set; }
         public DbSet<BooksHaveAuthors> BooksHaveAuthors { get; set; }
         public DbSet<BooksInventory> BooksInventories { get; set; }
         public DbSet<BooksRequests> BooksRequests { get; set; }
@@ -25,6 +26,8 @@ namespace FinalProject.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            
             //BooksRequests//
             modelBuilder.Entity<BooksRequests>()
                 .HasKey(t => new { t.Book_id, t.User_id });
@@ -72,7 +75,17 @@ namespace FinalProject.Data
 
         }
 
-        
+        internal bool Find(string login)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal bool Find(Userss user)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 
 }

@@ -1,29 +1,30 @@
-﻿<Properties StartupConfiguration="{6578F614-26A4-40C9-BDBE-A798C365A6B7}|Модульные тесты">
-  <MonoDevelop.Ide.Workbench ActiveDocument="FinalProjectTest/UserssTest.cs">
+﻿<Properties StartupConfiguration="{125159E4-0255-4563-A1B1-409A906A450C}|Default">
+  <MonoDevelop.Ide.ItemProperties.FinalProject PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FinalProject/Services/Userss/UserssService.cs">
     <Files>
-      <File FileName="FinalProjectTest/PublishersTest.cs" Line="93" Column="27" />
-      <File FileName="FinalProjectTest/BooksHaveAuthorsTest.cs" Line="97" Column="1" />
-      <File FileName="FinalProjectTest/AuthorsTest.cs" Line="22" Column="16" />
-      <File FileName="FinalProjectTest/BooksTest.cs" Line="30" Column="54" />
-      <File FileName="FinalProject/Services/ Roles/RolesRepository.cs" Line="14" Column="1" />
-      <File FileName="FinalProject/Services/ Roles/IRolesRepository.cs" Line="15" Column="10" />
-      <File FileName="FinalProjectTest/RolesTest.cs" Line="112" Column="27" />
-      <File FileName="FinalProjectTest/UserssTest.cs" Line="1" Column="1" />
+      <File FileName="FinalProject/Controllers/UserssController.cs" Line="33" Column="10" />
+      <File FileName="FinalProject/Startup.cs" Line="46" Column="1" />
+      <File FileName="FinalProject/appsettings.json" Line="6" Column="1" />
+      <File FileName="FinalProject/Views/Userss/Index.cshtml" Line="30" Column="10" />
+      <File FileName="FinalProjectTest/UserssTest.cs" Line="46" Column="25" />
+      <File FileName="FinalProject/Services/Userss/UserssRepository.cs" Line="18" Column="10" />
+      <File FileName="FinalProject/Services/Userss/IUserssRepository.cs" Line="14" Column="15" />
+      <File FileName="FinalProject/Services/Userss/UserssService.cs" Line="18" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="FinalProject" expanded="True">
             <Node name="FinalProject" expanded="True">
+              <Node name="Controllers" expanded="True" />
               <Node name="Services" expanded="True">
-                <Node name=" Roles" expanded="True" />
-                <Node name="Authors" expanded="True" />
-                <Node name="BooksRequests" expanded="True" />
-                <Node name="Publishers" expanded="True" />
+                <Node name="Userss" expanded="True">
+                  <Node name="UserssService.cs" selected="True" />
+                </Node>
               </Node>
             </Node>
             <Node name="FinalProjectTest" expanded="True">
-              <Node name="UserssTest.cs" selected="True" />
+              <Node name="Dependencies" expanded="True" />
             </Node>
           </Node>
         </State>

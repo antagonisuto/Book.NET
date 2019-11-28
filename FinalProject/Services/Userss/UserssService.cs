@@ -1,31 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using FinalProject.Services.Roles;
 
 namespace FinalProject.Services.Userss
 {
     public class UserssService
     {
         private readonly IUserssRepository _userRepo;
-        private readonly IRolesRepository _roleRepo;
+        //private readonly IRolesRepository _roleRepo;
 
-        public UserssService(IUserssRepository userRepo, IRolesRepository roleRepo)
+        public UserssService(IUserssRepository userRepo)
         {
             _userRepo = userRepo;
-            _roleRepo = roleRepo;
+            //_roleRepo = roleRepo;
 
         }
 
-        public async Task<List<Models.Userss>> GetAllUsers()
+        public async Task<List<Models.Userss>> GetAll()
         {
             return await _userRepo.GetAll();
         }
 
-        public async Task<List<Models.Roles>> GetAllRoles()
-        {
-            return await _roleRepo.GetAll();
-        }
+        //public async Task<List<Models.Roles>> GetAllRoles()
+        //{
+        //    return await _roleRepo.GetAll();
+        //}
 
         public async Task<Models.Userss> GetById(int Id)
         {

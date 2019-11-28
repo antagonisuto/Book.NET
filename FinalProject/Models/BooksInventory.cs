@@ -11,7 +11,7 @@ namespace FinalProject.Models
 
         public int User_id { get; set; }
         [ForeignKey("User_id")]
-        public virtual Userss User { get; set; }
+        public virtual Userss  User { get; set; }
 
     }
 }

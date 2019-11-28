@@ -30,12 +30,13 @@ namespace FinalProject.Services.Userss
 
         public Task<List<Models.Userss>> GetAll()
         {
-            return context.Userss.Include(e => e.Role).ToListAsync();
+            return context.Userss.ToListAsync();
+       
         }
 
         public async Task<Models.Userss> GetByID(long Id)
         {
-            return await context.Userss.Include(e => e.Role).FirstOrDefaultAsync(m => m.User_id == Id);
+            return await context.Userss.FirstOrDefaultAsync(m => m.User_id == Id);
         }
 
         public Task Save()
