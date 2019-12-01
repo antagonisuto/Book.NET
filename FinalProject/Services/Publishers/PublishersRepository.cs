@@ -22,12 +22,12 @@ namespace FinalProject.Services.Publishers
             context.Publishers.Add(pub);
         }
 
-        public bool PublisherExists(int id)
+        public bool PublisherExists(string id)
         {
             return context.Publishers.Any(e => e.Pub_id == id);
         }
 
-        public void Delete(int Id)
+        public void Delete(string Id)
         {
             Models.Publishers pub = context.Publishers.Find(Id);
             context.Publishers.Remove(pub);
@@ -38,7 +38,7 @@ namespace FinalProject.Services.Publishers
             return context.Publishers.ToListAsync();
         }
 
-        public async Task<Models.Publishers> GetByID(int Id)
+        public async Task<Models.Publishers> GetByID(string Id)
         {
             return await context.Publishers.FindAsync(Id);
         }

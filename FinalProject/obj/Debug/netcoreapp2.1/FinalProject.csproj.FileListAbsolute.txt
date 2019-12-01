@@ -48,3 +48,9 @@
 /Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/FinalProject.Views.pdb
 /Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/FinalProject.csproj.CopyComplete
 /Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/FinalProject.csprojAssemblyReference.cache
+/Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/Razor/Views/Account/AccessDenied.cshtml.g.cs
+/Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/Razor/Views/Account/Login.cshtml.g.cs
+/Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/Razor/Views/Administration/CreateRole.cshtml.g.cs
+/Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/Razor/Views/Administration/EditRole.cshtml.g.cs
+/Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/Razor/Views/Administration/EditUsersInRole.cshtml.g.cs
+/Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/Razor/Views/Administration/ListRoles.cshtml.g.cs

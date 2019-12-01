@@ -8,16 +8,16 @@ namespace FinalProject.Services.Publishers
     {
         Task<List<Models.Publishers>> GetAll();
 
-        Task<Models.Publishers> GetByID(int Id);
+        Task<Models.Publishers> GetByID(string Id);
 
         void Add(Models.Publishers pub);
 
-        void Delete(int Id);
+        void Delete(string Id);
 
         void Update(Models.Publishers pub);
 
         Task Save();
 
-        bool PublisherExists(int id);
+        bool PublisherExists(string id);
     }
 }

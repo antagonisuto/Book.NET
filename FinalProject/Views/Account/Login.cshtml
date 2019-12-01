@@ -1,0 +1,38 @@
+﻿@model ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "User Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Авторизация</title>
+</head>
+<body>
+
+    <form method="post">
+        <div asp-validation-summary="All" class="text-danger text-center"></div>
+
+            <label asp-for="Email">Логин</label>
+            <input asp-for="Email" type="text" class="form-control form-control-sm d-block mx-auto" required>
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-sign-in-alt"></i></span>
+            </div>
+                   
+
+
+           <label asp-for="Password">Пароль</label>
+
+        <input asp-for="Password" type="password">
+        <span asp-validation-for="Password" class="text-danger text-center"></span>
+
+
+
+                        <button type="submit">Sign in</button>
+
+                </form>
+
+</body>
+</html>

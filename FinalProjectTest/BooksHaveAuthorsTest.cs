@@ -15,8 +15,8 @@ namespace FinalProjectTest
         [Fact]
         public async Task GetAllTest()
         {
-            var BHA1 = new BooksHaveAuthors() { Book_id = 1, Author_id = 1 };
-            var BHA2 = new BooksHaveAuthors() { Book_id = 2, Author_id = 2};
+            var BHA1 = new BooksHaveAuthors() { Book_id = "1", Author_id = "1" };
+            var BHA2 = new BooksHaveAuthors() { Book_id = "2", Author_id = "2"};
             var BHAs = new List<BooksHaveAuthors> { BHA1, BHA2 };
 
             var fakeBooksHaveAuthorsRepositoryMock = new Mock<IBooksHaveAuthorsRepository>();
@@ -31,40 +31,40 @@ namespace FinalProjectTest
 
             Assert.Collection(resultCourseMemberes, courseMember =>
             {
-                Assert.Equal(1, courseMember.Book_id);
+                Assert.Equal("1", courseMember.Book_id);
             },
             courseMember =>
             {
-                Assert.Equal(2, courseMember.Book_id);
+                Assert.Equal("2", courseMember.Book_id);
             });
         }
 
         [Fact]
         public async Task GetByIdTest()
         {
-            var BHA1 = new BooksHaveAuthors() { Book_id = 1, Author_id = 1};
-            var BHA2 = new BooksHaveAuthors() { Book_id = 2, Author_id = 2};
+            var BHA1 = new BooksHaveAuthors() { Book_id = "1", Author_id = "1"};
+            var BHA2 = new BooksHaveAuthors() { Book_id = "2", Author_id = "2"};
 
             var fakeBooksHaveAuthorsRepositoryMock = new Mock<IBooksHaveAuthorsRepository>();
             var fakeBooksRepositoryMock = new Mock<IBooksRepository>(); var fakeAuthorRepositoryMock = new Mock<IAuthorsRepository>();
 
-            fakeBooksHaveAuthorsRepositoryMock.Setup(x => x.GetByID(1, 1)).ReturnsAsync(BHA1);
+            fakeBooksHaveAuthorsRepositoryMock.Setup(x => x.GetByID("1", "1")).ReturnsAsync(BHA1);
 
             var courseMemberService = new BooksHaveAuthorsService(fakeBooksHaveAuthorsRepositoryMock.Object, fakeBooksRepositoryMock.Object, fakeAuthorRepositoryMock.Object);
 
-            var result = await courseMemberService.GetById(1, 1);
+            var result = await courseMemberService.GetById("1", "1");
 
-            Assert.Equal(1, result.Book_id);
+            Assert.Equal("1", result.Book_id);
         }
 
         [Fact]
         public async Task AddAndSaveTest()
         {
-            var BHA1 = new BooksHaveAuthors() { Book_id = 1, Author_id = 1};
-            var BHA2 = new BooksHaveAuthors() { Book_id = 2, Author_id = 2};
+            var BHA1 = new BooksHaveAuthors() { Book_id = "1", Author_id = "1"};
+            var BHA2 = new BooksHaveAuthors() { Book_id = "2", Author_id = "2"};
             var BHAs = new List<BooksHaveAuthors> { BHA1, BHA2 };
 
-            var BHA3 = new BooksHaveAuthors() { Book_id = 3, Author_id = 3};
+            var BHA3 = new BooksHaveAuthors() { Book_id = "3", Author_id = "3"};
 
             var fakeBooksHaveAuthorsRepositoryMock = new Mock<IBooksHaveAuthorsRepository>();
             var fakeBooksRepositoryMock = new Mock<IBooksRepository>(); var fakeAuthorRepositoryMock = new Mock<IAuthorsRepository>();
@@ -82,11 +82,11 @@ namespace FinalProjectTest
         [Fact]
         public async Task UpdateAndSaveTest()
         {
-            var BHA1 = new BooksHaveAuthors() { Book_id = 1, Author_id = 1};
-            var BHA2 = new BooksHaveAuthors() { Book_id = 2, Author_id = 2};
+            var BHA1 = new BooksHaveAuthors() { Book_id = "1", Author_id = "1"};
+            var BHA2 = new BooksHaveAuthors() { Book_id = "2", Author_id = "2"};
             var BHAs = new List<BooksHaveAuthors> { BHA1, BHA2 };
 
-            var newCourseMember2 = new BooksHaveAuthors() { Book_id = 2, Author_id = 2};
+            var newCourseMember2 = new BooksHaveAuthors() { Book_id = "2", Author_id = "2"};
 
             var fakeBooksHaveAuthorsRepositoryMock = new Mock<IBooksHaveAuthorsRepository>();
             var fakeBooksRepositoryMock = new Mock<IBooksRepository>(); var fakeAuthorRepositoryMock = new Mock<IAuthorsRepository>();
@@ -97,27 +97,27 @@ namespace FinalProjectTest
 
             await courseMemberService.UpdateAndSave(newCourseMember2);
 
-            Assert.Equal(2, BHAs[1].Book_id);
+            Assert.Equal("2", BHAs[1].Book_id);
         }
 
         [Fact]
         public async Task DeleteAndSaveTest()
         {
-            var BHA1 = new BooksHaveAuthors() { Book_id = 1, Author_id = 1};
-            var BHA2 = new BooksHaveAuthors() { Book_id = 2, Author_id = 2};
+            var BHA1 = new BooksHaveAuthors() { Book_id = "1", Author_id = "1"};
+            var BHA2 = new BooksHaveAuthors() { Book_id = "2", Author_id = "2"};
             var BHAs = new List<BooksHaveAuthors> { BHA1, BHA2 };
 
             var fakeBooksHaveAuthorsRepositoryMock = new Mock<IBooksHaveAuthorsRepository>();
             var fakeBooksRepositoryMock = new Mock<IBooksRepository>(); var fakeAuthorRepositoryMock = new Mock<IAuthorsRepository>();
 
-            fakeBooksHaveAuthorsRepositoryMock.Setup(x => x.Delete(It.IsAny<int>(), It.IsAny<int>())).Callback(() => BHAs.RemoveAt(1));
+            fakeBooksHaveAuthorsRepositoryMock.Setup(x => x.Delete(It.IsAny<string>(), It.IsAny<string>())).Callback(() => BHAs.RemoveAt(1));
 
             var courseMemberService = new BooksHaveAuthorsService(fakeBooksHaveAuthorsRepositoryMock.Object, fakeBooksRepositoryMock.Object, fakeAuthorRepositoryMock.Object);
 
             await courseMemberService.DeleteAndSave(BHA2.Book_id, BHA2.Author_id);
 
             Assert.Single(BHAs);
-            Assert.Equal(1, BHAs[0].Book_id);
+            Assert.Equal("1", BHAs[0].Book_id);
         }
 
         [Fact]
@@ -126,11 +126,11 @@ namespace FinalProjectTest
             var fakeBooksHaveAuthorsRepositoryMock = new Mock<IBooksHaveAuthorsRepository>();
             var fakeBooksRepositoryMock = new Mock<IBooksRepository>(); var fakeAuthorRepositoryMock = new Mock<IAuthorsRepository>();
 
-            fakeBooksHaveAuthorsRepositoryMock.Setup(x => x.BooksHaveAuthorsExists(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
+            fakeBooksHaveAuthorsRepositoryMock.Setup(x => x.BooksHaveAuthorsExists(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             var courseMemberService = new BooksHaveAuthorsService(fakeBooksHaveAuthorsRepositoryMock.Object, fakeBooksRepositoryMock.Object, fakeAuthorRepositoryMock.Object);
 
-            bool result = courseMemberService.BooksHaveAuthorsExists(1, 1);
+            bool result = courseMemberService.BooksHaveAuthorsExists("1", "1");
 
             Assert.True(result);
         }

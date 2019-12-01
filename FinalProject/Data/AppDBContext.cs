@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Data
 {
-    public class AppDBContext : IdentityDbContext
+    public class AppDBContext : IdentityDbContext<Userss>
     {
 
         public AppDBContext(DbContextOptions options) : base(options)

@@ -10,16 +10,16 @@ namespace FinalProject.Services.Authors
     {
         Task<List<Models.Authors>> GetAll();
 
-        Task<Models.Authors> GetByID(int Id);
+        Task<Models.Authors> GetByID(string Id);
 
         void Add(Models.Authors author);
 
-        void Delete(int Id);
+        void Delete(string Id);
 
         void Update(Models.Authors author);
 
         Task Save();
 
-        bool AuthorExists(int id);
+        bool AuthorExists(string id);
     }
 }

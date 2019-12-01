@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FinalProject.Data;
 using FinalProject.Models;
 using FinalProject.Services.Authors;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Controllers
 {
+   
+    [Authorize(Roles = "Manager")]
     public class AuthorsController : Controller
     {
         //public readonly AppDBContext _context;
@@ -87,14 +90,14 @@ namespace FinalProject.Controllers
         //}
 
         // GET: Coaches/Edit/5
-        public async Task<IActionResult> Update(int? id)
+        public async Task<IActionResult> Update(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var author = await _context.GetById((int)id);
+            var author = await _context.GetById(id);
             if (author == null)
             {
                 return NotFound();
@@ -104,7 +107,7 @@ namespace FinalProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, [Bind("Author_id,Aithor_name")] Authors author)
+        public async Task<IActionResult> Update(string id, [Bind("Author_id,Aithor_name")] Authors author)
         {
             if (id != author.Author_id)
             {
@@ -133,14 +136,14 @@ namespace FinalProject.Controllers
             return View(author);
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var author = await _context.GetById((int)id);
+            var author = await _context.GetById((string)id);
             if (author == null)
             {
                 return NotFound();
@@ -152,7 +155,7 @@ namespace FinalProject.Controllers
         // POST: Coaches/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             await _context.DeleteAndSave(id);
             return RedirectToAction(nameof(Index));

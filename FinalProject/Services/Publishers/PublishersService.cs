@@ -18,7 +18,7 @@ namespace FinalProject.Services.Publishers
             return await _pubRepo.GetAll();
         }
 
-        public async Task<Models.Publishers> GetById(int Id)
+        public async Task<Models.Publishers> GetById(string Id)
         {
             return await _pubRepo.GetByID(Id);
         }
@@ -35,13 +35,13 @@ namespace FinalProject.Services.Publishers
             await _pubRepo.Save();
         }
 
-        public async Task DeleteAndSave(int Id)
+        public async Task DeleteAndSave(string Id)
         {
             _pubRepo.Delete(Id);
             await _pubRepo.Save();
         }
 
-        public bool PublisherExists(int id)
+        public bool PublisherExists(string id)
         {
             return _pubRepo.PublisherExists(id);
         }

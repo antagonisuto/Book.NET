@@ -35,7 +35,7 @@ namespace FinalProject.Services.BooksRequests
             return await _userRepo.GetAll();
         }
 
-        public async Task<Models.BooksRequests> GetById(int Book_id, int User_id)
+        public async Task<Models.BooksRequests> GetById(string Book_id, string User_id)
         {
             return await _bookReRepo.GetByID(Book_id, User_id);
         }
@@ -52,13 +52,13 @@ namespace FinalProject.Services.BooksRequests
             await _bookReRepo.Save();
         }
 
-        public async Task DeleteAndSave(int Book_id, int User_id)
+        public async Task DeleteAndSave(string Book_id, string User_id)
         {
             _bookReRepo.Delete(Book_id, User_id);
             await _bookReRepo.Save();
         }
 
-        public bool BooksRequestsExists(int Book_id, int User_id)
+        public bool BooksRequestsExists(string Book_id, string User_id)
         {
             return _bookReRepo.BooksRequestsExists(Book_id, User_id);
         }

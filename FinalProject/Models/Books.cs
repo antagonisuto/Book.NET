@@ -8,7 +8,7 @@ namespace FinalProject.Models
     public class Books
     {
         [Key]
-        public int Book_id { get; set; }
+        public string Book_id { get; set; }
 
         [Required]
         [StringLength(50, MinimumLength = 3)]
@@ -31,7 +31,7 @@ namespace FinalProject.Models
         public string Book_dec { get; set; }
 
         
-        public int? Pub_id { get; set; }
+        public string Pub_id { get; set; }
         [ForeignKey("Pub_id")]
         public virtual Publishers Publishers { get; set; }
 

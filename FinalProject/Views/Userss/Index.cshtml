@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<FinalProject.Models.Userss>
+@using FinalProject.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<Userss> SignInManager;
 
 @{
     Layout = "_Layout";
@@ -15,8 +18,27 @@
         public int Role_id { get; set; }-->
 
 <h2>@title</h2>
-
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <form method="post" asp-controller="account" asp-action="logout">
+            <button type="submit" style="width:auto"
+                    class="nav-link btn btn-link py-0">
+                Logout @User.Identity.Name
+            </button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="account" asp-action="login">
+            Login
+        </a>
+    </li>
+}
 <h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>
+
 <table class="table table-bordered table-sm table-striped">
     <thead>
         <tr><th>Id</th><th>UserName</th><th>Password</th><th>FullName</th><th>Update</th><th>Delete</th></tr>
@@ -31,15 +53,15 @@
             @foreach (var p in Model)
             {
                 <tr>
-                    <td>@p.User_id</td>
-                    <td>@p.Username</td>
-                    <td>@p.Password</td>
+                    <td>@p.Id</td>
+                    <td>@p.UserName</td>
+                    <td>@p.PasswordHash</td>
                     <td>@p.FullName</td>
 
 
-                    <td><a asp-action="Update" asp-route-id="@p.User_id">Update</a></td>
+                    <td><a asp-action="Update" asp-route-id="@p.Id">Update</a></td>
                     <td>
-                        <form asp-action="Delete" method="post" asp-route-id="@p.User_id">
+                        <form asp-action="Delete" method="post" asp-route-id="@p.Id">
                             <button>Delete</button>
                         </form>
                     </td>

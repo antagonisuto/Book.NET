@@ -20,7 +20,7 @@ namespace FinalProject.Services.Authors
             return await _authorRepo.GetAll();
         }
 
-        public async Task<FinalProject.Models.Authors> GetById(int Id)
+        public async Task<FinalProject.Models.Authors> GetById(string Id)
         {
             return await _authorRepo.GetByID(Id);
         }
@@ -37,13 +37,13 @@ namespace FinalProject.Services.Authors
             await _authorRepo.Save();
         }
 
-        public async Task DeleteAndSave(int Id)
+        public async Task DeleteAndSave(string Id)
         {
             _authorRepo.Delete(Id);
             await _authorRepo.Save();
         }
 
-        public bool CoachExists(int id)
+        public bool CoachExists(string id)
         {
             return _authorRepo.AuthorExists(id);
         }

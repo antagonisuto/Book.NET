@@ -26,7 +26,7 @@ namespace FinalProject.Services.Userss
         //    return await _roleRepo.GetAll();
         //}
 
-        public async Task<Models.Userss> GetById(int Id)
+        public async Task<Models.Userss> GetById(string Id)
         {
             return await _userRepo.GetByID(Id);
         }
@@ -43,13 +43,13 @@ namespace FinalProject.Services.Userss
             await _userRepo.Save();
         }
 
-        public async Task DeleteAndSave(int Id)
+        public async Task DeleteAndSave(string Id)
         {
             _userRepo.Delete(Id);
             await _userRepo.Save();
         }
 
-        public bool UserExists(int id)
+        public bool UserExists(string id)
         {
             return _userRepo.UserExists(id);
         }

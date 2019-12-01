@@ -22,7 +22,7 @@ namespace FinalProject.Services.Userss
             context.Userss.Add(user);
         }
 
-        public void Delete(int Id)
+        public void Delete(string Id)
         {
             Models.Userss user = context.Userss.Find(Id);
             context.Userss.Remove(user);
@@ -34,9 +34,9 @@ namespace FinalProject.Services.Userss
        
         }
 
-        public async Task<Models.Userss> GetByID(long Id)
+        public async Task<Models.Userss> GetByID(string Id)
         {
-            return await context.Userss.FirstOrDefaultAsync(m => m.User_id == Id);
+            return await context.Userss.FirstOrDefaultAsync(m => m.Id == Id);
         }
 
         public Task Save()
@@ -49,9 +49,9 @@ namespace FinalProject.Services.Userss
             context.Entry(user).State = EntityState.Modified;
         }
 
-        public bool UserExists(int id)
+        public bool UserExists(string id)
         {
-            return context.Userss.Any(e => e.User_id == id);
+            return context.Userss.Any(e => e.Id == id);
         }
     }
 }

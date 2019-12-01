@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FinalProject.Data;
 using FinalProject.Models;
 using FinalProject.Services.Books;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Controllers
 {
+    
+    [Authorize(Roles = "User")]
     public class BooksController : Controller
     {
         private readonly BooksService _booksService;
@@ -28,14 +31,14 @@ namespace FinalProject.Controllers
         }
 
         // GET: Equipments/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var equipment = await _booksService.GetById((int)id);
+            var equipment = await _booksService.GetById((string)id);
             if (equipment == null)
             {
                 return NotFound();

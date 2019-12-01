@@ -1,31 +1,31 @@
 ﻿<Properties StartupConfiguration="{125159E4-0255-4563-A1B1-409A906A450C}|Default">
   <MonoDevelop.Ide.ItemProperties.FinalProject PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FinalProject/Services/Userss/UserssService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FinalProject/Controllers/UserssController.cs">
     <Files>
-      <File FileName="FinalProject/Controllers/UserssController.cs" Line="33" Column="10" />
-      <File FileName="FinalProject/Startup.cs" Line="46" Column="1" />
-      <File FileName="FinalProject/appsettings.json" Line="6" Column="1" />
-      <File FileName="FinalProject/Views/Userss/Index.cshtml" Line="30" Column="10" />
-      <File FileName="FinalProjectTest/UserssTest.cs" Line="46" Column="25" />
-      <File FileName="FinalProject/Services/Userss/UserssRepository.cs" Line="18" Column="10" />
-      <File FileName="FinalProject/Services/Userss/IUserssRepository.cs" Line="14" Column="15" />
-      <File FileName="FinalProject/Services/Userss/UserssService.cs" Line="18" Column="1" />
+      <File FileName="FinalProject/Views/Administration/ListRoles.cshtml" Line="10" Column="3" />
+      <File FileName="FinalProject/ViewModels/RegisterViewModel.cs" Line="15" Column="1" />
+      <File FileName="FinalProject/Views/Account/Login.cshtml" Line="3" Column="3" />
+      <File FileName="FinalProject/Views/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="FinalProject/Controllers/UserssController.cs" Line="31" Column="13" />
+      <File FileName="FinalProject/Models/Userss.cs" Line="34" Column="1" />
+      <File FileName="FinalProject/Startup.cs" Line="47" Column="31" />
+      <File FileName="FinalProject/Controllers/AccountController.cs" Line="1" Column="1" />
+      <File FileName="FinalProject/Controllers/AuthorsController.cs" Line="16" Column="4" />
+      <File FileName="FinalProject/Controllers/BooksController.cs" Line="17" Column="5" />
+      <File FileName="FinalProject/Controllers/BooksHaveAuthorsController.cs" Line="15" Column="4" />
+      <File FileName="FinalProject/Controllers/BooksInventoryController.cs" Line="16" Column="3" />
+      <File FileName="FinalProject/Controllers/BooksRequestsController.cs" Line="17" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="FinalProject" expanded="True">
             <Node name="FinalProject" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="Userss" expanded="True">
-                  <Node name="UserssService.cs" selected="True" />
-                </Node>
+              <Node name="Controllers" expanded="True">
+                <Node name="UserssController.cs" selected="True" />
               </Node>
             </Node>
-            <Node name="FinalProjectTest" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-            </Node>
+            <Node name="FinalProjectTest" expanded="True" />
           </Node>
         </State>
       </Pad>

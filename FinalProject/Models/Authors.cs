@@ -7,7 +7,7 @@ namespace FinalProject.Models
     public class Authors
     {
         [Key]
-        public int Author_id { get; set; }
+        public string Author_id { get; set; }
 
         [Required]
         [StringLength(50)]

@@ -8,11 +8,11 @@ namespace FinalProject.Services.Userss
     public interface IUserssRepository
     {
         Task<List<Models.Userss>> GetAll();
-        Task<Models.Userss> GetByID(long Id);
+        Task<Models.Userss> GetByID(string Id);
         void Add(Models.Userss equipment);
-        void Delete(int Id);
+        void Delete(string Id);
         void Update(Models.Userss equipment);
         Task Save();
-        bool UserExists(int id);
+        bool UserExists(string id);
     }
 }

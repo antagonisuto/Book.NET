@@ -7,7 +7,7 @@ namespace FinalProject.Models
     public class Publishers : IValidatableObject
     {
         [Key]
-        public int Pub_id { get; set; }
+        public string Pub_id { get; set; }
 
         [Required]
         [StringLength(50)]

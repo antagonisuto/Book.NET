@@ -13,8 +13,8 @@ namespace FinalProjectTest
         [Fact]
         public async Task GetPublisherTest()
         {
-            var pub1 = new Publishers() { Pub_id = 1, Pub_name = "test pub 1"};
-            var pub2 = new Publishers() { Pub_id = 2, Pub_name = "test pub 2"};
+            var pub1 = new Publishers() { Pub_id = "1", Pub_name = "test pub 1"};
+            var pub2 = new Publishers() { Pub_id = "2", Pub_name = "test pub 2"};
             var pubs = new List<Publishers> { pub1, pub2 };
 
             var fakeRepositoryMock = new Mock<IPublishersRepository>();
@@ -38,16 +38,16 @@ namespace FinalProjectTest
         [Fact]
         public async Task GetMemberByIdTest()
         {
-            var pub1 = new Publishers() { Pub_id = 1, Pub_name = "test pub 1" };
-            var pub2 = new Publishers() { Pub_id = 2, Pub_name = "test pub 2" };
+            var pub1 = new Publishers() { Pub_id = "1", Pub_name = "test pub 1" };
+            var pub2 = new Publishers() { Pub_id = "2", Pub_name = "test pub 2" };
 
             var fakeRepositoryMock = new Mock<IPublishersRepository>();
 
-            fakeRepositoryMock.Setup(x => x.GetByID(1)).ReturnsAsync(pub1);
+            fakeRepositoryMock.Setup(x => x.GetByID("1")).ReturnsAsync(pub1);
 
             var pubService = new PublishersService(fakeRepositoryMock.Object);
 
-            var resultMember = await pubService.GetById(1);
+            var resultMember = await pubService.GetById("1");
 
             Assert.Equal("test pub 1", resultMember.Pub_name);
         }
@@ -55,11 +55,11 @@ namespace FinalProjectTest
         [Fact]
         public async Task AddAndSaveTest()
         {
-            var pub1 = new Publishers() { Pub_id = 1, Pub_name = "test pub 1" };
-            var pub2 = new Publishers() { Pub_id = 2, Pub_name = "test pub 2" };
+            var pub1 = new Publishers() { Pub_id = "1", Pub_name = "test pub 1" };
+            var pub2 = new Publishers() { Pub_id = "2", Pub_name = "test pub 2" };
             var pubs = new List<Publishers> { pub1, pub2 };
 
-            var pub3 = new Publishers() { Pub_id = 2, Pub_name = "test pub 2" };
+            var pub3 = new Publishers() { Pub_id = "2", Pub_name = "test pub 2" };
 
             var fakeRepositoryMock = new Mock<IPublishersRepository>();
 
@@ -76,11 +76,11 @@ namespace FinalProjectTest
         [Fact]
         public async Task UpdateAndSaveTest()
         {
-            var pub1 = new Publishers() { Pub_id = 1, Pub_name = "test pub 1" };
-            var pub2 = new Publishers() { Pub_id = 2, Pub_name = "test pub 2" };
+            var pub1 = new Publishers() { Pub_id = "1", Pub_name = "test pub 1" };
+            var pub2 = new Publishers() { Pub_id = "2", Pub_name = "test pub 2" };
             var pubs = new List<Publishers> { pub1, pub2 };
 
-            var newpub2 = new Publishers() { Pub_id = 2, Pub_name = "test pub 2" };
+            var newpub2 = new Publishers() { Pub_id = "2", Pub_name = "test pub 2" };
 
             var fakeRepositoryMock = new Mock<IPublishersRepository>();
 
@@ -96,13 +96,13 @@ namespace FinalProjectTest
         [Fact]
         public async Task DeleteAndSaveTest()
         {
-            var pub1 = new Publishers() { Pub_id = 1, Pub_name = "test pub 1" };
-            var pub2 = new Publishers() { Pub_id = 2, Pub_name = "test pub 2" };
+            var pub1 = new Publishers() { Pub_id = "1", Pub_name = "test pub 1" };
+            var pub2 = new Publishers() { Pub_id = "2", Pub_name = "test pub 2" };
             var pubs = new List<Publishers> { pub1, pub2 };
 
             var fakeRepositoryMock = new Mock<IPublishersRepository>();
 
-            fakeRepositoryMock.Setup(x => x.Delete(It.IsAny<int>())).Callback<int>(arg => pubs.RemoveAt(1));
+            fakeRepositoryMock.Setup(x => x.Delete(It.IsAny<string>())).Callback<string>(arg => pubs.RemoveAt(1));
 
             var pubService = new PublishersService(fakeRepositoryMock.Object);
 
@@ -117,11 +117,11 @@ namespace FinalProjectTest
         {
             var fakeRepositoryMock = new Mock<IPublishersRepository>();
 
-            fakeRepositoryMock.Setup(x => x.PublisherExists(It.IsAny<int>())).Returns(true);
+            fakeRepositoryMock.Setup(x => x.PublisherExists(It.IsAny<string>())).Returns(true);
 
             var pubService = new PublishersService(fakeRepositoryMock.Object);
 
-            bool result = pubService.PublisherExists(1);
+            bool result = pubService.PublisherExists("1");
 
             Assert.True(result);
         }

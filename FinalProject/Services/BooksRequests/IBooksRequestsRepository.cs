@@ -7,11 +7,11 @@ namespace FinalProject.Services.BooksRequests
     public interface IBooksRequestsRepository
     {
         Task<List<Models.BooksRequests>> GetAll();
-        Task<Models.BooksRequests> GetByID(int Book_id, int User_id);
+        Task<Models.BooksRequests> GetByID(string Book_id, string User_id);
         void Add(Models.BooksRequests bookUser);
-        void Delete(int Book_id, int User_id);
+        void Delete(string Book_id, string User_id);
         void Update(Models.BooksRequests bookUser);
         Task Save();
-        bool BooksRequestsExists(int Book_id, int User_id);
+        bool BooksRequestsExists(string Book_id, string User_id);
     }
 }

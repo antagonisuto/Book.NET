@@ -30,6 +30,9 @@
     <Folder Include="Services\BooksInventory\" />
     <Folder Include="Services\BooksRequests\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Administration\" />
   </ItemGroup>
 
   <ItemGroup>

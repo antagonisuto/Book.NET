@@ -22,12 +22,12 @@ namespace FinalProject.Services.Authors
             _context.Authors.Add(author);
         }
 
-        public bool AuthorExists(int id)
+        public bool AuthorExists(string id)
         {
             return _context.Authors.Any(e => e.Author_id == id);
         }
 
-        public void Delete(int Id)
+        public void Delete(string Id)
         {
             FinalProject.Models.Authors author = _context.Authors.Find(Id);
             _context.Authors.Remove(author);
@@ -38,7 +38,7 @@ namespace FinalProject.Services.Authors
             return _context.Authors.ToListAsync();
         }
 
-        public async Task<FinalProject.Models.Authors> GetByID(int Id)
+        public async Task<FinalProject.Models.Authors> GetByID(string Id)
         {
             return await _context.Authors.FindAsync(Id);
         }

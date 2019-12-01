@@ -35,7 +35,7 @@ namespace FinalProject.Services.BooksHaveAuthors
             return await _auRepo.GetAll();
         }
 
-        public async Task<Models.BooksHaveAuthors> GetById(int Book_id, int Author_id)
+        public async Task<Models.BooksHaveAuthors> GetById(string Book_id, string Author_id)
         {
             return await _bookAuRepo.GetByID(Book_id, Author_id);
         }
@@ -52,13 +52,13 @@ namespace FinalProject.Services.BooksHaveAuthors
             await _bookAuRepo.Save();
         }
 
-        public async Task DeleteAndSave(int Book_id, int Author_id)
+        public async Task DeleteAndSave(string Book_id, string Author_id)
         {
             _bookAuRepo.Delete(Book_id, Author_id);
             await _bookAuRepo.Save();
         }
 
-        public bool BooksHaveAuthorsExists(int Book_id, int Author_id)
+        public bool BooksHaveAuthorsExists(string Book_id, string Author_id)
         {
             return _bookAuRepo.BooksHaveAuthorsExists(Book_id, Author_id);
         }

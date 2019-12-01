@@ -16,11 +16,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Controllers
 {
+    
     [Authorize(Roles = "Admin")]
     public class UserssController : Controller
     {
         private readonly UserssService _service;
         private readonly UserManager<Userss> _userManager;
+
+        //[TempData]
+        //public string Count { get; set; }
 
         public UserssController(UserssService service, UserManager<Userss> userManager)
         {
@@ -29,6 +33,7 @@ namespace FinalProject.Controllers
         }
 
         // GET: /<controller>/
+    
         public async Task<IActionResult> Index()
         {
             //return View(await _service.GetAllUsers());
@@ -38,33 +43,49 @@ namespace FinalProject.Controllers
 
         public IActionResult Create()
         {
-            //ViewData["Role_id"] = new SelectList(await _service.GetAllRoles(), "Role_id", "Role_idd");
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("User_id,Username,Password,FullName")] Userss user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        await _service.AddAndSave(user);
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    //ViewData["Role_id"] = new SelectList(await _service.GetAllRoles(), "Role_id", "Role_idd", user.Role_id);
-        //    return View(user);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(RegisterViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var user = new Userss
+                {
+                    UserName = model.Email,
+                    PasswordHash = model.Password,
+                    FullName = model.Full_Name
+                };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                //await _usersService.AddAndSave(user);
+                //return RedirectToAction(nameof(Index));
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("index", "/Userss");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+            return View(model);
+        }
+
+
 
 
         // GET: Equipment/Edit/5
-        public async Task<IActionResult> Update(int? id)
+        public async Task<IActionResult> Update(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var user = await _service.GetById((int)id);
+            var user = await _service.GetById((string)id);
             if (user == null)
             {
                 return NotFound();
@@ -76,9 +97,9 @@ namespace FinalProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, [Bind("User_id,Username,Password,FullName")]  Userss user)
+        public async Task<IActionResult> Update(string id, [Bind("User_id,Username,Password,FullName")]  Userss user)
         {
-            if (id != user.User_id)
+            if (id != user.Id)
             {
                 return NotFound();
             }
@@ -91,7 +112,7 @@ namespace FinalProject.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!_service.UserExists(user.User_id))
+                    if (!_service.UserExists(user.Id))
                     {
                         return NotFound();
                     }
@@ -108,36 +129,14 @@ namespace FinalProject.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> DeleteAsync(string id)
         {
             await _service.DeleteAndSave(id);
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Create(RegisterViewModel model)
-        {
 
-            if (ModelState.IsValid)
-            {
-                var user = new Userss
-                {
-                    Username = model.Email,
-                    FullName = model.Full_Name,
-                };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                //await _usersService.AddAndSave(user);
-                //return RedirectToAction(nameof(Index));
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("index", "/Userss");
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-            }
-            return View(model);
-        }
+        
 
 
         ////VerifyUsername

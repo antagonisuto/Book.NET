@@ -23,12 +23,12 @@ namespace FinalProject.Services.BooksHaveAuthors
             context.BooksHaveAuthors.Add(bookAu);
         }
 
-        public bool BooksHaveAuthorsExists(int Book_id, int Author_id)
+        public bool BooksHaveAuthorsExists(string Book_id, string Author_id)
         {
             return context.BooksHaveAuthors.Any(e => e.Book_id == Book_id && e.Author_id == Author_id);
         }
 
-        public void Delete(int Book_id, int Author_id)
+        public void Delete(string Book_id, string Author_id)
         {
             Models.BooksHaveAuthors bookAu = context.BooksHaveAuthors.Find(Book_id, Author_id);
             context.BooksHaveAuthors.Remove(bookAu);
@@ -39,7 +39,7 @@ namespace FinalProject.Services.BooksHaveAuthors
             return context.BooksHaveAuthors.Include(c => c.Book).Include(c => c.Authors).ToListAsync();
         }
 
-        public async Task<Models.BooksHaveAuthors> GetByID(int Book_id, int Author_id)
+        public async Task<Models.BooksHaveAuthors> GetByID(string Book_id, string Author_id)
         {
             return await context.BooksHaveAuthors.Include(c => c.Book).Include(c => c.Authors).FirstOrDefaultAsync(e => e.Book_id == Book_id && e.Author_id == Author_id);
         }

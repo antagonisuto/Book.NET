@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FinalProject.Data;
 using FinalProject.Models;
 using FinalProject.Services.Publishers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,9 +13,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Controllers
 {
+    
+    [Authorize(Roles = "User")]
     public class PublishersController : Controller
     {
-
+        
         private readonly PublishersService _pubService;
 
         public PublishersController(PublishersService pubService)
@@ -28,14 +31,14 @@ namespace FinalProject.Controllers
         }
 
         // GET: Rooms/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var room = await _pubService.GetById((int)id);
+            var room = await _pubService.GetById((string)id);
             if (room == null)
             {
                 return NotFound();
@@ -66,14 +69,14 @@ namespace FinalProject.Controllers
         }
 
         // GET: Rooms/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var room = await _pubService.GetById((int)id);
+            var room = await _pubService.GetById((string)id);
             if (room == null)
             {
                 return NotFound();
@@ -86,7 +89,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Pub_id,Pub_name")] Publishers room)
+        public async Task<IActionResult> Edit(string id, [Bind("Pub_id,Pub_name")] Publishers room)
         {
             if (id != room.Pub_id)
             {
@@ -116,14 +119,14 @@ namespace FinalProject.Controllers
         }
 
         // GET: Rooms/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var room = await _pubService.GetById((int)id);
+            var room = await _pubService.GetById((string)id);
             if (room == null)
             {
                 return NotFound();
@@ -135,7 +138,7 @@ namespace FinalProject.Controllers
         // POST: Rooms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             await _pubService.DeleteAndSave(id);
             return RedirectToAction(nameof(Index));

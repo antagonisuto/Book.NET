@@ -22,12 +22,12 @@ namespace FinalProject.Services.Books
             context.Books.Add(book);
         }
 
-        public bool BookExists(int id)
+        public bool BookExists(string id)
         {
             return context.Books.Any(e => e.Book_id == id);
         }
 
-        public void Delete(int Id)
+        public void Delete(string Id)
         {
             FinalProject.Models.Books book = context.Books.Find(Id);
             context.Books.Remove(book);
@@ -38,7 +38,7 @@ namespace FinalProject.Services.Books
             return context.Books.Include(e => e.Publishers).ToListAsync();
         }
 
-        public async Task<Models.Books> GetByID(int Id)
+        public async Task<Models.Books> GetByID(string Id)
         {
             return await context.Books.Include(e => e.Publishers).FirstOrDefaultAsync(m => m.Book_id == Id);
         }

@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 using FinalProject.Data;
 using FinalProject.Models;
 using FinalProject.Services.BooksHaveAuthors;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Controllers
 {
+   
+    [Authorize(Roles = "Manager")]
     public class BooksHaveAuthorsController : Controller
     {
         private readonly BooksHaveAuthorsService _service;
@@ -47,7 +50,7 @@ namespace FinalProject.Controllers
             return View(BHA);
         }
 
-        public async Task<IActionResult> Update(int? Book_id, int? Authors_id)
+        public async Task<IActionResult> Update(string Book_id, string Authors_id)
         {
 
             if (Book_id == null || Authors_id == null)
@@ -55,7 +58,7 @@ namespace FinalProject.Controllers
                 return NotFound();
             }
 
-            var BHA = await _service.GetById((int)Book_id, (int)Authors_id);
+            var BHA = await _service.GetById((string)Book_id, (string)Authors_id);
             if (BHA == null)
             {
                 return NotFound();
@@ -69,7 +72,7 @@ namespace FinalProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int Book_id, int Author_id, [Bind("Book_id,Author_id")] BooksHaveAuthors BHA)
+        public async Task<IActionResult> Update(string Book_id, string Author_id, [Bind("Book_id,Author_id")] BooksHaveAuthors BHA)
         {
 
             if (Book_id != BHA.Book_id || Author_id != BHA.Author_id)
@@ -102,26 +105,26 @@ namespace FinalProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: UserAnswers/Delete/5
-        public async Task<IActionResult> Delete(int? Book_id, int? Author_id)
-        {
-            if (Book_id == null || Author_id == null)
-            {
-                return NotFound();
-            }
+        //// GET: UserAnswers/Delete/5
+        //public async Task<IActionResult> Delete(string Book_id, string Author_id)
+        //{
+        //    if (Book_id == null || Author_id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var BHA = await _service.GetById((int)Book_id, (int)Author_id);
-            if (BHA == null)
-            {
-                return NotFound();
-            }
+        //    var BHA = await _service.GetById((string)Book_id, (string)Author_id);
+        //    if (BHA == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(BHA);
-        }
+        //    return View(BHA);
+        //}
 
         // POST: UserAnswers/Delete/5
         [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> Delete(int Book_id, int Author_id)
+        public async Task<IActionResult> Delete(string Book_id, string Author_id)
         {
             await _service.DeleteAndSave(Book_id, Author_id);
             return RedirectToAction(nameof(Index));

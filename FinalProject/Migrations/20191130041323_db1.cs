@@ -4,32 +4,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FinalProject.Migrations
 {
-    public partial class auth : Migration
+    public partial class db1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Userss_Roles_Role_id",
-                table: "Userss");
-
-            migrationBuilder.DropTable(
-                name: "Roles");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Userss_Role_id",
-                table: "Userss");
-
-            migrationBuilder.DropColumn(
-                name: "Role_id",
-                table: "Userss");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "User_id",
-                table: "Userss",
-                nullable: false,
-                oldClrType: typeof(int))
-                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn);
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -62,11 +40,36 @@ namespace FinalProject.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    FullName = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Authors",
+                columns: table => new
+                {
+                    Author_id = table.Column<string>(nullable: false),
+                    Author_name = table.Column<string>(maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Authors", x => x.Author_id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Publishers",
+                columns: table => new
+                {
+                    Pub_id = table.Column<string>(nullable: false),
+                    Pub_name = table.Column<string>(maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Publishers", x => x.Pub_id);
                 });
 
             migrationBuilder.CreateTable(
@@ -175,6 +178,102 @@ namespace FinalProject.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Books",
+                columns: table => new
+                {
+                    Book_id = table.Column<string>(nullable: false),
+                    Book_title = table.Column<string>(maxLength: 50, nullable: false),
+                    Book_page = table.Column<int>(nullable: false),
+                    Book_pub = table.Column<DateTime>(nullable: false),
+                    Book_shortDec = table.Column<string>(maxLength: 100, nullable: false),
+                    Book_dec = table.Column<string>(maxLength: 200, nullable: false),
+                    Pub_id = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Books", x => x.Book_id);
+                    table.ForeignKey(
+                        name: "FK_Books_Publishers_Pub_id",
+                        column: x => x.Pub_id,
+                        principalTable: "Publishers",
+                        principalColumn: "Pub_id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BooksHaveAuthors",
+                columns: table => new
+                {
+                    Book_id = table.Column<string>(nullable: false),
+                    Author_id = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BooksHaveAuthors", x => new { x.Author_id, x.Book_id });
+                    table.ForeignKey(
+                        name: "FK_BooksHaveAuthors_Authors_Author_id",
+                        column: x => x.Author_id,
+                        principalTable: "Authors",
+                        principalColumn: "Author_id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BooksHaveAuthors_Books_Book_id",
+                        column: x => x.Book_id,
+                        principalTable: "Books",
+                        principalColumn: "Book_id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BooksInventories",
+                columns: table => new
+                {
+                    Book_id = table.Column<string>(nullable: false),
+                    User_id = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BooksInventories", x => new { x.Book_id, x.User_id });
+                    table.ForeignKey(
+                        name: "FK_BooksInventories_Books_Book_id",
+                        column: x => x.Book_id,
+                        principalTable: "Books",
+                        principalColumn: "Book_id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BooksInventories_AspNetUsers_User_id",
+                        column: x => x.User_id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BooksRequests",
+                columns: table => new
+                {
+                    Book_id = table.Column<string>(nullable: false),
+                    User_id = table.Column<string>(nullable: false),
+                    RequestDate = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BooksRequests", x => new { x.Book_id, x.User_id });
+                    table.ForeignKey(
+                        name: "FK_BooksRequests_Books_Book_id",
+                        column: x => x.Book_id,
+                        principalTable: "Books",
+                        principalColumn: "Book_id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BooksRequests_AspNetUsers_User_id",
+                        column: x => x.User_id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -211,6 +310,26 @@ namespace FinalProject.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_Pub_id",
+                table: "Books",
+                column: "Pub_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BooksHaveAuthors_Book_id",
+                table: "BooksHaveAuthors",
+                column: "Book_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BooksInventories_User_id",
+                table: "BooksInventories",
+                column: "User_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BooksRequests_User_id",
+                table: "BooksRequests",
+                column: "User_id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -231,48 +350,28 @@ namespace FinalProject.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "BooksHaveAuthors");
+
+            migrationBuilder.DropTable(
+                name: "BooksInventories");
+
+            migrationBuilder.DropTable(
+                name: "BooksRequests");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Authors");
+
+            migrationBuilder.DropTable(
+                name: "Books");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
-            migrationBuilder.AlterColumn<int>(
-                name: "User_id",
-                table: "Userss",
-                nullable: false,
-                oldClrType: typeof(int))
-                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn);
-
-            migrationBuilder.AddColumn<int>(
-                name: "Role_id",
-                table: "Userss",
-                nullable: false,
-                defaultValue: 0);
-
-            migrationBuilder.CreateTable(
-                name: "Roles",
-                columns: table => new
-                {
-                    Role_id = table.Column<int>(nullable: false),
-                    Role_name = table.Column<string>(maxLength: 20, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Roles", x => x.Role_id);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Userss_Role_id",
-                table: "Userss",
-                column: "Role_id");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Userss_Roles_Role_id",
-                table: "Userss",
-                column: "Role_id",
-                principalTable: "Roles",
-                principalColumn: "Role_id",
-                onDelete: ReferentialAction.Cascade);
+            migrationBuilder.DropTable(
+                name: "Publishers");
         }
     }
 }

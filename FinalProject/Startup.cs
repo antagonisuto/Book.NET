@@ -66,7 +66,7 @@ namespace FinalProject
             services.AddScoped<IPublishersRepository, PublishersRepository>();
 
             services.AddScoped<UserssService>();
-            services.AddScoped<IBooksRepository, BooksRepository>();
+            services.AddScoped<IUserssRepository, UserssRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

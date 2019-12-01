@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20191128121800_auth")]
-    partial class auth
+    [Migration("20191130041323_db1")]
+    partial class db1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("FinalProject.Models.Authors", b =>
                 {
-                    b.Property<int>("Author_id")
+                    b.Property<string>("Author_id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Author_name")
@@ -37,7 +37,7 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("FinalProject.Models.Books", b =>
                 {
-                    b.Property<int>("Book_id")
+                    b.Property<string>("Book_id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Book_dec")
@@ -56,7 +56,7 @@ namespace FinalProject.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<int?>("Pub_id");
+                    b.Property<string>("Pub_id");
 
                     b.HasKey("Book_id");
 
@@ -67,9 +67,9 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("FinalProject.Models.BooksHaveAuthors", b =>
                 {
-                    b.Property<int>("Author_id");
+                    b.Property<string>("Author_id");
 
-                    b.Property<int>("Book_id");
+                    b.Property<string>("Book_id");
 
                     b.HasKey("Author_id", "Book_id");
 
@@ -80,9 +80,9 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("FinalProject.Models.BooksInventory", b =>
                 {
-                    b.Property<int>("Book_id");
+                    b.Property<string>("Book_id");
 
-                    b.Property<int>("User_id");
+                    b.Property<string>("User_id");
 
                     b.HasKey("Book_id", "User_id");
 
@@ -93,9 +93,9 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("FinalProject.Models.BooksRequests", b =>
                 {
-                    b.Property<int>("Book_id");
+                    b.Property<string>("Book_id");
 
-                    b.Property<int>("User_id");
+                    b.Property<string>("User_id");
 
                     b.Property<string>("RequestDate");
 
@@ -108,7 +108,7 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("FinalProject.Models.Publishers", b =>
                 {
-                    b.Property<int>("Pub_id")
+                    b.Property<string>("Pub_id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Pub_name")
@@ -122,24 +122,56 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("FinalProject.Models.Userss", b =>
                 {
-                    b.Property<int>("User_id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256);
+
+                    b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<bool>("LockoutEnabled");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<DateTimeOffset?>("LockoutEnd");
 
-                    b.HasKey("User_id");
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256);
 
-                    b.ToTable("Userss");
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -182,56 +214,6 @@ namespace FinalProject.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccessFailedCount");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed");
-
-                    b.Property<bool>("LockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("PhoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("TwoFactorEnabled");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex");
-
-                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -355,7 +337,7 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("FinalProject.Models.Userss")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -363,7 +345,7 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("FinalProject.Models.Userss")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -376,7 +358,7 @@ namespace FinalProject.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("FinalProject.Models.Userss")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -384,7 +366,7 @@ namespace FinalProject.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("FinalProject.Models.Userss")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
