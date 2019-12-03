@@ -18,3 +18,4 @@
 /Users/madina/Projects/FinalProject/FinalProjectTest/obj/Debug/netcoreapp2.1/FinalProjectTest.csproj.CopyComplete
 /Users/madina/Projects/FinalProject/FinalProjectTest/obj/Debug/netcoreapp2.1/FinalProjectTest.dll
 /Users/madina/Projects/FinalProject/FinalProjectTest/obj/Debug/netcoreapp2.1/FinalProjectTest.pdb
+/Users/madina/Projects/FinalProject/FinalProjectTest/bin/Debug/netcoreapp2.1/libman.json

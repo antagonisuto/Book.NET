@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FinalProject.Data;
+using FinalProject.Hubs;
 using FinalProject.Models;
 using FinalProject.Services.Authors;
 using FinalProject.Services.Books;
@@ -13,7 +11,6 @@ using FinalProject.Services.Publishers;
 using FinalProject.Services.Userss;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -50,14 +47,13 @@ namespace FinalProject
             services.AddDbContext<AppDBContext>(options => options.UseNpgsql(_confSting.GetConnectionString("DefaultConnection")));
             services.AddMvc()
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-         
 
-      
+            services.AddSignalR();
+
             services.AddIdentity<Userss, IdentityRole>()
                .AddEntityFrameworkStores<AppDBContext>();
 
             services.AddMvc();
-
             services.AddHttpContextAccessor();
 
             services.AddScoped<AuthorsService>();
@@ -90,9 +86,15 @@ namespace FinalProject
                 app.UseDeveloperExceptionPage();
             }
 
+
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseSession();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chatHub");
+            });
 
             app.UseMvc(routes =>
             {
@@ -101,6 +103,7 @@ namespace FinalProject
                     template: "{controller=Main}/{action=Index}/{id?}");
             });
 
+           
             app.UseCookiePolicy();
         }
     }

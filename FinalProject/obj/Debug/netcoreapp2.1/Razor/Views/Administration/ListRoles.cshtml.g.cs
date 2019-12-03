@@ -79,7 +79,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("        ");
             EndContext();
             BeginContext(230, 135, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "45215e4170d749b48a45954c6408f7bb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae32302572b14747bd3d44f7e480edf5", async() => {
                 BeginContext(349, 12, true);
                 WriteLiteral("Add new role");
                 EndContext();
@@ -135,7 +135,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("</h5>\r\n                </div>\r\n                <div class=\"card-footer\">\r\n                    ");
             EndContext();
             BeginContext(749, 113, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ba32686d5939423da358dcbf4117a201", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8785af94998243c88c7a333b154d7cbd", async() => {
                 BeginContext(854, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -192,7 +192,7 @@ using Microsoft.AspNetCore.Http;
                 ");
             EndContext();
             BeginContext(1311, 177, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8560da925ff243c79ab507579c38c8f7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bfd9a38fa5e14748bc1327fc5bbac01a", async() => {
                 BeginContext(1433, 51, true);
                 WriteLiteral("\r\n                    Create Role\r\n                ");
                 EndContext();
