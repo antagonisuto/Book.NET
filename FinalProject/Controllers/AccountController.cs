@@ -112,11 +112,11 @@ namespace FinalProject.Controllers
                     }
                     else
                     {
-                        //if (string.IsNullOrEmpty(HttpContext.Session.GetString("smth")))
-                        //{
-                        //    HttpContext.Session.SetString("smth", model.Email);
-                        //}
-                        //Message = $"Welcome {HttpContext.Session.GetString("smth")}!";
+                        if (string.IsNullOrEmpty(HttpContext.Session.GetString("smth")))
+                        {
+                            HttpContext.Session.SetString("smth", model.Email);
+                        }
+                        Message = $"Welcome {HttpContext.Session.GetString("smth")}!";
                         return RedirectToAction("index", "/");
                     }
                 }

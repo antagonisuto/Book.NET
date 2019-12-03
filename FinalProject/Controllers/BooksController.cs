@@ -15,10 +15,13 @@ using Microsoft.EntityFrameworkCore;
 namespace FinalProject.Controllers
 {
     
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "Admin,User,Manager")]
     public class BooksController : Controller
     {
         private readonly BooksService _booksService;
+
+        [TempData]
+        public string Message { get; set; }
 
         public BooksController(BooksService booksService)
         {
@@ -27,7 +30,9 @@ namespace FinalProject.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _booksService.GetAllBooks());
+            var surveys = await _booksService.GetAllBooks();
+            Message = $"Hello my friend in Survey page";
+            return View(surveys);
         }
 
         // GET: Equipments/Details/5

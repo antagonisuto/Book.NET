@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FinalProject.Controllers
 {
    
-    [Authorize(Roles = "Manager")]
+    [Authorize(Roles = "Admin,Manager,User")]
     public class AuthorsController : Controller
     {
         //public readonly AppDBContext _context;

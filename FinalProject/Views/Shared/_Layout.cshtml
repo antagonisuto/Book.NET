@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<FinalProject.Models.Userss> 
+@using FinalProject.Models;
+@using Microsoft.AspNetCore.Identity;
+@using Microsoft.Extensions.DependencyInjection.Extensions
+@inject SignInManager<Userss> SignInManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>@ViewData["Title"]</title>
@@ -6,6 +12,116 @@
     <link href="@Url.Content("~/css/bootstrap.css")" rel="stylesheet" />
 </head>
 <body class="m-1 p-1">
-    @RenderBody()
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="nav-link" asp-controller="Main" asp-action="Index">BoLov</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Administration" asp-action="ListRoles">Roles</a>
+            </li>
+            
+/**/<li class="nav-item">
+                <a class="nav-link" asp-controller="Userss" asp-action="Index">Users</a>
+            </li>
+            
+/**/<li class="nav-item">
+                <a class="nav-link" asp-controller="Authors" asp-action="Index">Authors</a>
+            </li>
+            
+/**/<li class="nav-item">
+                <a class="nav-link" asp-controller="Books" asp-action="Index">Books</a>
+            </li>
+            
+/**/<li class="nav-item">
+                <a class="nav-link" asp-controller="BooksHaveAuthors" asp-action="Index">BooksHaveAuthors</a>
+            </li>
+            
+/**/<li class="nav-item">
+                <a class="nav-link" asp-controller="BooksInventory" asp-action="Index">BookInventory</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="BooksRequests" asp-action="Index">BookRequest</a>
+            </li>
+
+}
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Manager"))
+                {
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Books" asp-action="Index">Books</a>
+                </li>
+                
+/**/<li class="nav-item">
+                    <a class="nav-link" asp-controller="Authors" asp-action="Index">Authors</a>
+                </li>
+                
+/**/<li class="nav-item">
+                    <a class="nav-link" asp-controller="BooksHaveAuthors" asp-action="Index">BooksHaveAuthors</a>
+                </li>
+                
+/**/<li class="nav-item">
+                    <a class="nav-link" asp-controller="BooksRequests" asp-action="Index">BooksRequests</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Publishers" asp-action="Index">Publishers</a>
+                </li>
+                
+                }
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Books" asp-action="Index">Books</a>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Authors" asp-action="Index">Authors</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" asp-controller="Publishers" asp-action="Index">Publishers</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li class="nav-item">
+                        <form method="post" asp-controller="account" asp-action="logout">
+                            <button type="submit" style="width:auto"
+                                    class="nav-link btn btn-link py-0">
+                                Logout @User.Identity.Name
+                            </button>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="account" asp-action="login">
+                            Login
+                        </a>
+                    </li>
+                }
+            </ul>
+
+        </div>
+    </nav>
+    <br />
+    <div class="container">
+        @{
+        if (TempData.Peek("Message") != null)
+        {
+            <h3 class="text-success">@TempData.Peek("Message")</h3>
+         }
+        else
+        {
+            <h3 class="text-danger">Nothing hey!</h3>
+        }
+        }
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
 </body>
 </html> 

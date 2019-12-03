@@ -1,42 +1,11 @@
-﻿@model IEnumerable<FinalProject.Models.Userss>
-@using FinalProject.Models;
-@using Microsoft.AspNetCore.Identity;
-@inject SignInManager<Userss> SignInManager;
-
+﻿
 @{
     Layout = "_Layout";
     var title = "READ Userss";
     ViewData["Title"] = title;
 }
 
-<!---
-        public int User_id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string FullName { get; set; }
 
-        public int Role_id { get; set; }-->
-
-<h2>@title</h2>
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item">
-        <form method="post" asp-controller="account" asp-action="logout">
-            <button type="submit" style="width:auto"
-                    class="nav-link btn btn-link py-0">
-                Logout @User.Identity.Name
-            </button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="account" asp-action="login">
-            Login
-        </a>
-    </li>
-}
 <h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>
 
 <table class="table table-bordered table-sm table-striped">

@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FinalProject.Controllers
 {
    
-    [Authorize(Roles = "Manager")]
+    [Authorize(Roles = "Manager,Admin")]
     public class BooksHaveAuthorsController : Controller
     {
         private readonly BooksHaveAuthorsService _service;

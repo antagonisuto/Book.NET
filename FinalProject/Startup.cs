@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,14 +39,26 @@ namespace FinalProject
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(1000);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddDbContext<AppDBContext>(options => options.UseNpgsql(_confSting.GetConnectionString("DefaultConnection")));
-            //services.AddDefaultIdentity<Users, IdentityRole<long>>().AddEntityFrameworkStores<AppDBContext, long>()
-            // .AddDefaultTokenProviders();
+            services.AddMvc()
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+         
+
+      
             services.AddIdentity<Userss, IdentityRole>()
                .AddEntityFrameworkStores<AppDBContext>();
 
             services.AddMvc();
-           
+
+            services.AddHttpContextAccessor();
 
             services.AddScoped<AuthorsService>();
             services.AddScoped<IAuthorsRepository, AuthorsRepository>();

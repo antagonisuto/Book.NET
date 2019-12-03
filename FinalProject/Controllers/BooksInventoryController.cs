@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 namespace courseProject.Controllers
 {
   
-    [Authorize(Roles = "Manager")]
+    [Authorize(Roles = "Manager,Admin")]
     public class BooksInventoryController : Controller
     {
         private readonly BooksInventoryService _service;

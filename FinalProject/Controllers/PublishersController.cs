@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FinalProject.Controllers
 {
     
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User,Admin,Manager")]
     public class PublishersController : Controller
     {
         
@@ -27,7 +27,8 @@ namespace FinalProject.Controllers
         // GET: Rooms
         public async Task<IActionResult> Index()
         {
-            return View(await _pubService.GetAll());
+            var users = await _pubService.GetAll();
+            return View(users);
         }
 
         // GET: Rooms/Details/5
