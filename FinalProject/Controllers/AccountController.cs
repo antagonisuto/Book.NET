@@ -43,6 +43,9 @@ namespace FinalProject.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
+
+            Message = $"You are logged out :c";
+
             return RedirectToAction("index", "/");
         }
 
@@ -112,11 +115,10 @@ namespace FinalProject.Controllers
                     }
                     else
                     {
-                        if (string.IsNullOrEmpty(HttpContext.Session.GetString("smth")))
-                        {
-                            HttpContext.Session.SetString("smth", model.Email);
-                        }
-                        Message = $"Welcome {HttpContext.Session.GetString("smth")}!";
+                        
+                        HttpContext.Session.SetString("Message", model.Email);
+
+                        Message = $"Welcome {HttpContext.Session.GetString("Message")}!";
                         return RedirectToAction("index", "/");
                     }
                 }

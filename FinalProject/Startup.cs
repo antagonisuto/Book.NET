@@ -100,7 +100,8 @@ namespace FinalProject
                     name: "default",
                     template: "{controller=Main}/{action=Index}/{id?}");
             });
-           
+
+            app.UseCookiePolicy();
         }
     }
 }

@@ -24,8 +24,8 @@ namespace FinalProject.Controllers
         private readonly UserssService _service;
         private readonly UserManager<Userss> _userManager;
 
-        [TempData]
-        public string Message { get; set; }
+        //[TempData]
+        //public string Message { get; set; }
 
         public UserssController(UserssService service, UserManager<Userss> userManager)
         {
@@ -37,11 +37,11 @@ namespace FinalProject.Controllers
     
         public async Task<IActionResult> Index()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Message")))
-            {
-                HttpContext.Session.SetString("Message", "Hello from session");
-            }
-            Message = $"You have visited this page {HttpContext.Session.GetString("Message")}";
+            //if (string.IsNullOrEmpty(HttpContext.Session.GetString("Message")))
+            //{
+            //    HttpContext.Session.SetString("Message", "Hello from session");
+            //}
+            //Message = HttpContext.Session.GetString("Message");
             //return View(await _service.GetAllUsers());
             var users = await _service.GetAll();
             return View(users);

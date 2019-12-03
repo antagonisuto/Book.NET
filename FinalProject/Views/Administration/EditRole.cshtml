@@ -1,19 +1,11 @@
 ﻿@model ViewModels.EditRoleViewModel
 
 @{
-    ViewBag.Title = "Edit Role";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "_Layout";
+    var title = "Edit Role";
+    ViewData["Title"] = title;
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-</head>
-<body>
 
     <div class="container mt-3">
         <h1>Edit Role</h1>
@@ -69,5 +61,3 @@
             </div>
         </form>
     </div>
-</body>
-</html>

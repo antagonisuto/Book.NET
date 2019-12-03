@@ -111,13 +111,13 @@
     <br />
     <div class="container">
         @{
-        if (TempData.Peek("Message") != null)
+        if (TempData.Peek("Message")!= null)
         {
-            <h3 class="text-success">@TempData.Peek("Message")</h3>
+            <h6 class="text-success">@TempData.Peek("Message")</h6>
          }
         else
         {
-            <h3 class="text-danger">Nothing hey!</h3>
+            <h6 class="text-danger"> You did not enter portal</h6>
         }
         }
     </div>

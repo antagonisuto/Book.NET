@@ -20,8 +20,8 @@ namespace FinalProject.Controllers
     {
         private readonly BooksService _booksService;
 
-        [TempData]
-        public string Message { get; set; }
+        //[TempData]
+        //public string Message { get; set; }
 
         public BooksController(BooksService booksService)
         {
@@ -31,7 +31,7 @@ namespace FinalProject.Controllers
         public async Task<IActionResult> Index()
         {
             var surveys = await _booksService.GetAllBooks();
-            Message = $"Hello my friend in Survey page";
+            //Message = $"Session saves Books";
             return View(surveys);
         }
 

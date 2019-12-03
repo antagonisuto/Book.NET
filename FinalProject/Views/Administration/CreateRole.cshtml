@@ -1,19 +1,10 @@
 ﻿@model ViewModels.CreateRoleViewModel
 
 @{
-    ViewBag.Title = "Create New Role";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "_Layout";
+    var title = "Create Role";
+    ViewData["Title"] = title;
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-</head>
-<body>
 
     <div class="container mt-3">
         <form asp-action="CreateRole" method="post" class="mt-3">
@@ -36,6 +27,3 @@
             </div>
         </form>
     </div>
-
-</body>
-</html>
