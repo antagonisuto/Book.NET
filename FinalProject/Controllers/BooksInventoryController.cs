@@ -32,10 +32,10 @@ namespace courseProject.Controllers
 
         
         // GET: UserAnswers/Create
-        public async Task<IActionResult> CreateAsync()
+        public async Task<IActionResult> Create()
         {
             ViewData["Book_id"] = new SelectList(await _service.GetAllBooks(), "Book_id", "Book_title");
-            ViewData["User_id"] = new SelectList(await _service.GetAllUsers(), "User_id", "User_id");
+            ViewData["User_id"] = new SelectList(await _service.GetAllUsers(), "Id", "UserName");
             return View();
         }
 
@@ -52,7 +52,7 @@ namespace courseProject.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Book_id"] = new SelectList(await _service.GetAllBooks(), "Book_id", "Book_title", bookUser.Book_id);
-            ViewData["User_id"] = new SelectList(await _service.GetAllUsers(), "User_id", "User_id", bookUser.User_id);
+            ViewData["User_id"] = new SelectList(await _service.GetAllUsers(), "Id", "UserName", bookUser.User_id);
             return View(bookUser);
         }
 

@@ -1,38 +1,23 @@
 ﻿@model ViewModels.LoginViewModel
 
 @{
-    ViewBag.Title = "User Login";
+    Layout = "_Layout";
+    var title = "User Login";
+    ViewData["Title"] = title;
 }
 
-<!DOCTYPE html>
+<h2>@title</h2>
 
-<html>
-<head>
-    <title>Авторизация</title>
-</head>
-<body>
-
-    <form method="post">
-        <div asp-validation-summary="All" class="text-danger text-center"></div>
-
-            <label asp-for="Email">Логин</label>
-            <input asp-for="Email" type="text" class="form-control form-control-sm d-block mx-auto" required>
-            <div class="input-group-append">
-                <span class="input-group-text"><i class="fas fa-sign-in-alt"></i></span>
-            </div>
-                   
-
-
-           <label asp-for="Password">Пароль</label>
-
-        <input asp-for="Password" type="password">
-        <span asp-validation-for="Password" class="text-danger text-center"></span>
-
-
-
-                        <button type="submit">Sign in</button>
-
-                </form>
-
-</body>
-</html>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form class="m-1 p-1" method="post">
+    <div class="form-group">
+        <label asp-for="Email">Login</label>
+        <input asp-for="Email" type="text" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign In</button>
+</form> 

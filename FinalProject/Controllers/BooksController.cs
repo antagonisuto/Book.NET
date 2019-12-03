@@ -52,9 +52,11 @@ namespace FinalProject.Controllers
             return View(equipment);
         }
 
-        public async Task<IActionResult> CreateAsync()
+        public async Task<IActionResult> Create()
         {
-            ViewData["Pub_id"] = new SelectList(await _booksService.GetAllPublishers(), "Pub_id", "Book_id");
+            //ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name");
+            //ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question");
+            ViewData["Pub_id"] = new SelectList(await _booksService.GetAllPublishers(), "Pub_id", "Pub_name");
             return View();
         }
 
@@ -67,7 +69,10 @@ namespace FinalProject.Controllers
                 await _booksService.AddAndSave(equipment);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Pub_id"] = new SelectList(await _booksService.GetAllPublishers(), "Pub_id", "Book_id", equipment.Pub_id);
+
+            //ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Answers.UserId);
+            //ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question", user_Answers.SurveyId);
+            ViewData["Pub_id"] = new SelectList(await _booksService.GetAllPublishers(), "Pub_id", "Pub_name", equipment.Pub_id);
             return View(equipment);
         }
 

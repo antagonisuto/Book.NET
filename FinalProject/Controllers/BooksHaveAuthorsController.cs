@@ -28,7 +28,7 @@ namespace FinalProject.Controllers
             return View(await _service.GetAllBooksHaveAuthors());
         }
 
-        public async Task<IActionResult> CreateAsync()
+        public async Task<IActionResult> Create()
         {
             ViewData["Book_id"] = new SelectList(await _service.GetAllBooks(), "Book_id", "Book_title");
             ViewData["Author_id"] = new SelectList(await _service.GetAllAuthors(), "Author_id", "Author_name");

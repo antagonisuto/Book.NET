@@ -12,18 +12,18 @@
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <form class="m-1 p-1" method="post">
     <div class="form-group">
-        <label asp-for="Book_id"></label>
-        <input asp-for="Book_id" class="form-control" />
+        <label asp-for="Book_id">Book Name</label>
+        <select asp-for="Book_id" class="form-control" asp-items="ViewBag.Book_id"></select>
 
     </div>
     <div class="form-group">
-        <label asp-for="User_id"></label>
-        <input asp-for="User_id" class="form-control" type="number" />
-       
+        <label asp-for="User_id">UserName</label>
+        <select asp-for="User_id" class="form-control" asp-items="ViewBag.User_id"></select>
+
     </div>
     <div class="form-group">
-        <label asp-for="RequestDate"></label>
-        <input asp-for="RequestDate" class="form-control" type="datetime" />
+        <label asp-for="RequestDate">Request Date</label>
+        <input asp-for="RequestDate" class="form-control" type="datetime" data-provide="datepicker" />
 
     </div>
 
