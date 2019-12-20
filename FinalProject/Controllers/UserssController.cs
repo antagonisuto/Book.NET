@@ -135,12 +135,11 @@ namespace FinalProject.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> DeleteAsync(string id)
+        public async Task<IActionResult> Delete(string id)
         {
             await _service.DeleteAndSave(id);
             return RedirectToAction(nameof(Index));
         }
-
 
         
 

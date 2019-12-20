@@ -6,43 +6,47 @@
     ViewData["Title"] = title;
 }
 
-<h2>@title</h2>
+<h3 class="text-center text-info">Our Lovely Members</h3>
+<div class="container justify-content-md-center" style="margin-left:15%; margin-top:2%">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Book)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Authors)
-            </th>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-borderless">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Book.Book_title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Authors.Author_name)
-                </td>
-                <td>
-                    @Html.ActionLink("Update", "Update", new { id1 = item.Book_id, id2 = item.Author_id })
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", new { id1 = item.Book_id, id2 = item.Author_id })
-                </td>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Book)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Authors)
+                </th>
+
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Book.Book_title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Authors.Author_name)
+                    </td>
+                    <td>
+                        <div class="btn btn-sm btn-outline-secondary" style="margin-right:10px">
 
+                            @Html.ActionLink("Update", "Update", new { id1 = item.Book_id, id2 = item.Author_id })
 
+                        </div>
+                        <div class="btn btn-sm btn-outline-danger" style="margin-right:10px">
+                            @Html.ActionLink("Delete", "Delete", new { id1 = item.Book_id, id2 = item.Author_id })
+                            </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    </div>
+<a asp-action="Create" class="btn btn-outline-info" style="margin-left:39%; margin-top:5%; width:250px">Connect Book and Author</a>

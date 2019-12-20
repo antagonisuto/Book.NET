@@ -1,25 +1,26 @@
 ﻿<Properties StartupConfiguration="{125159E4-0255-4563-A1B1-409A906A450C}|Default">
   <MonoDevelop.Ide.ItemProperties.FinalProject PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FinalProject/Startup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FinalProject/Views/BooksHaveAuthors/Index.cshtml">
     <Files>
-      <File FileName="FinalProject/Hubs/ChatHub.cs" Line="15" Column="1" />
-      <File FileName="FinalProject/Startup.cs" Line="23" Column="6" />
-      <File FileName="FinalProject/Views/Main/Index.cshtml" Line="11" Column="8" />
-      <File FileName="FinalProject/wwwroot/js/chat.js" Line="16" Column="28" />
+      <File FileName="FinalProject/Views/BooksInventory/Index.cshtml" Line="33" Column="21" />
+      <File FileName="FinalProject/Views/BooksHaveAuthors/Index.cshtml" Line="37" Column="97" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="FinalProject" expanded="True">
             <Node name="FinalProject" expanded="True">
-              <Node name="Hubs" expanded="True" />
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Main" expanded="True" />
+                <Node name="BooksHaveAuthors" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
+                <Node name="BooksInventory" expanded="True" />
+                <Node name="Shared" expanded="True" />
+                <Node name="Userss" expanded="True" />
               </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="js" expanded="True" />
-              </Node>
-              <Node name="Startup.cs" selected="True" />
+              <Node name="wwwroot" expanded="True" />
             </Node>
           </Node>
         </State>

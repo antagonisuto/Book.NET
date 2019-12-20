@@ -75,7 +75,7 @@ Write(title);
             WriteLiteral("</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(196, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bc6f463a1bf64d7fb73d162fdf14bfbc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88f1ed1ccbd64c14844bd87bf5950e5a", async() => {
                 BeginContext(219, 10, true);
                 WriteLiteral("Create New");
                 EndContext();

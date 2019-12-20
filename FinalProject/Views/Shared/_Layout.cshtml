@@ -10,10 +10,14 @@
     <meta name="viewport" content="width=device-width" />
     <link href="@Url.Content("~/css/bootstrap.css")" rel="stylesheet" />
 </head>
-<body class="m-1 p-1">
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="nav-link" asp-controller="Main" asp-action="Index">BoLov</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <div class="container d-flex justify-content-between">
+        <a class="nav-link" asp-controller="Main" asp-action="Index" style="color: white;">
+                <img src="/img/agenda.png" style="height:26px; width:auto;">
+            Book Lovers
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,9 +48,7 @@
 /**/<li class="nav-item">
                 <a class="nav-link" asp-controller="BooksInventory" asp-action="Index">BookInventory</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="BooksRequests" asp-action="Index">BookRequest</a>
-            </li>
+
 
 }
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("Manager"))
@@ -63,9 +65,6 @@
                     <a class="nav-link" asp-controller="BooksHaveAuthors" asp-action="Index">BooksHaveAuthors</a>
                 </li>
                 
-/**/<li class="nav-item">
-                    <a class="nav-link" asp-controller="BooksRequests" asp-action="Index">BooksRequests</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Publishers" asp-action="Index">Publishers</a>
                 </li>
@@ -90,7 +89,7 @@
                     <li class="nav-item">
                         <form method="post" asp-controller="account" asp-action="logout">
                             <button type="submit" style="width:auto"
-                                    class="nav-link btn btn-link py-0">
+                                    class="btn btn-outline-info my-2 my-sm-0">
                                 Logout @User.Identity.Name
                             </button>
                         </form>
@@ -99,7 +98,7 @@
                 else
                 {
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="account" asp-action="login">
+                        <a class="btn btn-outline-info my-2 my-sm-0" asp-controller="account" asp-action="login">
                             Login
                         </a>
                     </li>
@@ -107,22 +106,27 @@
             </ul>
 
         </div>
+           </div>
     </nav>
+
     <br />
-    <div class="container">
-        @{
-        if (TempData.Peek("Message")!= null)
-        {
-            <h6 class="text-success">@TempData.Peek("Message")</h6>
-         }
-        else
-        {
-            <h6 class="text-danger"> You did not enter portal</h6>
-        }
-        }
-    </div>
+
     <div class="container">
         @RenderBody()
+    </div>
+    <div style="margin:15%">
+    </div>
+    <div class="container text-center" >
+        @{
+        if (TempData.Peek("Message") != null)
+        {
+            <p class="text-secondary">@TempData.Peek("Message")</p>
+    }
+    else
+    {
+        <p class="text-secondary"> You did not enter portal</p>
+}
+        }
     </div>
 </body>
 </html> 

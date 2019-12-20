@@ -2,20 +2,21 @@
 
 @{
     Layout = "_Layout";
-    var title = "CREATE Authors";
+    var title = "Name Authors of Masterpiece";
     ViewData["Title"] = title;
 }
 
 
-<link href="css/bootstrap.css" rel="stylesheet" />
-<h2>@title</h2>
+<div class="container justify-content-md-center" style="width: 50%;">
+    <h3 class="text-info text-center" style="margin:20px;">@title</h3>
 
-<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<form class="m-1 p-1" method="post">
-    <div class="form-group">
-        <label asp-for="Author_name"></label>
-        <input asp-for="Author_name" class="form-control" />
-        <span asp-validation-for="Author_name" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form class="m-1 p-1" method="post">
+        <div class="form-group">
+            <label asp-for="Author_name"></label>
+            <input asp-for="Author_name" class="form-control" />
+            <span asp-validation-for="Author_name" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-info btn-block">Submit</button>
+    </form>
+</div>

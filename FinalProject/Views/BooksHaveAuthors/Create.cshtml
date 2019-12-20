@@ -6,23 +6,22 @@
     ViewData["Title"] = title;
 }
 
-<h2>@title</h2>
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Book_id" class="control-label"></label>
-                <select asp-for="Book_id" class="form-control" asp-items="ViewBag.Book_id"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Author_id" class="control-label"></label>
-                <select asp-for="Author_id" class="form-control" asp-items="ViewBag.Author_id"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div class="container justify-content-md-center" style="width: 50%;">
+    <h3 class="text-info text-center" style="margin:20px;">@title</h3>
+    
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Book_id" class="control-label"></label>
+                    <select asp-for="Book_id" class="form-control" asp-items="ViewBag.Book_id"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Author_id" class="control-label"></label>
+                    <select asp-for="Author_id" class="form-control" asp-items="ViewBag.Author_id"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-info btn-block" />
+                </div>
+            </form>
 </div>
 

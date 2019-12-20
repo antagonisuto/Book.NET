@@ -2,49 +2,55 @@
 
 @{
     Layout = "_Layout";
-    ViewBag.Title = "All Roles";
-}
 
+}
+<!--
 
 <div class="container mt-3">
-    <h1>All Roles</h1>
+   
 
-    @if (Model.Any())
-    {
         <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole"
            asp-controller="administration">Add new role</a>
 
-        foreach (var role in Model)
-        {
+
             <div class="card mb-3">
                 <div class="card-header">
-                    Role Id : @role.Id
+                    Role Id : 
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">@role.Name</h5>
+                    <h5 class="card-title"></h5>
                 </div>
                 <div class="card-footer">
-                    <a asp-controller="Administration" asp-action="EditRole" asp-route-id="@role.Id" class="btn btn-primary">Edit</a>
+                    <a  class="btn btn-primary">Edit</a>
                     <a href="#" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         }
     }
-    else
-    {
-        <div class="card">
-            <div class="card-header">
-                No roles created yet
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    Use the button below to create a role
-                </h5>
-                <a class="btn btn-primary" style="width:auto"
-                   asp-controller="administration" asp-action="CreateRole">
-                    Create Role
-                </a>
-            </div>
-        </div>
-    }
+
 </div>
+
+-->
+
+<h3 class="text-info text-center" style="margin: 20px;">New Role</h3>
+    
+<div class="card-columns">
+    @foreach (var role in Model)
+        {
+            <div class="card text-center" style="padding-top:5%; padding-bottom:5%">
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom:10%">@role.Name</h5>
+                    <div class="d-flex align-items-center">
+                        <a class="btn btn-outline-secondary btn-block" asp-controller="Administration" asp-action="EditRole" asp-route-id="@role.Id" style="margin-right:10px">Modificate</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+            <a class="card-body text-center  btn btn-outline-info btn-block" asp-action="CreateRole"
+           asp-controller="administration">
+                Create New Role
+            </a>
+

@@ -1,45 +1,48 @@
 ﻿@model IEnumerable<FinalProject.Models.BooksInventory>
 
 @{
-Layout = "_Layout";
-var title = "READ BooksInventory";
-ViewData["Title"] = title;
+    Layout = "_Layout";
+    var title = "READ BooksInventory";
+    ViewData["Title"] = title;
 }
 
+<h3 class="text-center text-info">Our Lovely Members</h3>
+<div class="container justify-content-md-center" style="margin-left:15%; margin-top:2%">
 
-<a asp-action="Create">Create New</a>
+  
 
-<table class="table table-bordered table-sm table-striped">
-    <thead>
-        <tr>
-            <th>
-               Book Name
-            </th>
-            <th>
-                Inventory
-            </th>
-            <th>Update</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-borderless">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Book.Book_title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.FullName)
-                </td>
-
-                <td>
-                    @Html.ActionLink("Update", "Update", new { id1 = item.Book_id, id2 = item.User_id })
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", new { id1 = item.Book_id, id2 = item.User_id })
-                </td>
+                <th scope="col"> Book Name </th>
+                <th scope="col"> Inventory </th>
+                <th scope="col">Modification</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Book.Book_title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FullName)
+                    </td>
+
+                    <td>
+                        <div class="btn btn-sm btn-outline-secondary" style="margin-right:10px">
+                            @Html.ActionLink("Update", "Update", new { id1 = item.Book_id, id2 = item.User_id })
+                        </div>
+                        <div class="btn btn-sm btn-outline-danger" style="margin-right:10px">
+                            @Html.ActionLink("Delete", "Delete", new { id1 = item.Book_id, id2 = item.User_id })
+                            </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<a asp-action="Create" class="btn btn-outline-info" style="margin-left:39%; margin-top:5%; width:250px">Connect Book and Author</a>

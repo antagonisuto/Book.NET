@@ -2,22 +2,25 @@
 
 @{
     Layout = "_Layout";
-    var title = "User Login";
+    var title = "Are you Book Lover?";
     ViewData["Title"] = title;
 }
 
-<h2>@title</h2>
+<div class="container justify-content-md-center" style="width: 50%;">
+        <h2 class="text-info text-center">@title</h2>
 
-<div asp-validation-summary="All" class="text-danger"></div>
-<form class="m-1 p-1" method="post">
-    <div class="form-group">
-        <label asp-for="Email">Login</label>
-        <input asp-for="Email" type="text" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Sign In</button>
-</form> 
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <form class="m-1 p-1" method="post">
+            <div class="form-group">
+                <label asp-for="Email">Login</label>
+                <input asp-for="Email" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-info btn-block">Sign In</button>
+            <button type="submit" class="btn btn-outline-info btn-block">Register</button>
+        </form>
+</div>

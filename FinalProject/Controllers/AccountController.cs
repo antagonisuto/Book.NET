@@ -118,7 +118,7 @@ namespace FinalProject.Controllers
                         
                         HttpContext.Session.SetString("Message", model.Email);
 
-                        Message = $"Welcome {HttpContext.Session.GetString("Message")}!";
+                        Message = $"Your account: {HttpContext.Session.GetString("Message")}!";
                         return RedirectToAction("index", "/");
                     }
                 }

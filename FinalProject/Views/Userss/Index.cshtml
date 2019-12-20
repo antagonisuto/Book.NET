@@ -6,36 +6,46 @@
 }
 
 
-<h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>
-
-<table class="table table-bordered table-sm table-striped">
-    <thead>
-        <tr><th>Id</th><th>UserName</th><th>Password</th><th>FullName</th><th>Update</th><th>Delete</th></tr>
-    </thead>
-    <tbody>
-        @if (Model == null)
-        {
-            <tr><td colspan="7" class="text-center">No Model Data</td></tr>
-        }
-        else
-        {
-            @foreach (var p in Model)
+<h3 class="text-center text-info">Our Lovely Members</h3>
+<div class="container justify-content-md-center" style="margin-left:15%; margin-top:2%">
+    <table class="table table-borderless" >
+        <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">FullName</th>
+                <th scope="col">Modification</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model == null)
             {
-                <tr>
-                    <td>@p.Id</td>
-                    <td>@p.UserName</td>
-                    <td>@p.PasswordHash</td>
-                    <td>@p.FullName</td>
-
-
-                    <td><a asp-action="Update" asp-route-id="@p.Id">Update</a></td>
-                    <td>
-                        <form asp-action="Delete" method="post" asp-route-id="@p.Id">
-                            <button>Delete</button>
-                        </form>
-                    </td>
-                </tr>
+                <tr><td colspan="7" class="text-center">No Model Data</td></tr>
             }
-        }
-    </tbody>
-</table> 
+            else
+            {
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.UserName</td>
+                        <td>@p.FullName</td>
+
+
+                        <td>
+                            <div class="d-flex align-items-center">
+
+                                <a class="btn btn-sm btn-outline-secondary" asp-action="Update" asp-route-id="@p.Id" style="margin-right:10px">Update</a>
+                                <form asp-action="Delete" method="post" asp-route-id="@p.Id"> 
+                                    <button class="btn btn-sm btn-outline-danger" style="margin-right:80px"> Delete</button>
+                                </form>
+                                
+                            </div>
+                           
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<a asp-action="Create" class="btn btn-outline-info" style="margin-left:39%; margin-top:5%; width:250px">Create New Member</a>
