@@ -120,7 +120,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("</h5>\r\n                    <div class=\"d-flex align-items-center\">\r\n                        ");
             EndContext();
             BeginContext(1242, 165, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b52ae73e6010495e8d9e1b27c9c81983", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3d8e3653d8f94f6eaf419c1d9b38b25c", async() => {
                 BeginContext(1393, 10, true);
                 WriteLiteral("Modificate");
                 EndContext();
@@ -167,7 +167,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("\r\n    </div>\r\n\r\n            ");
             EndContext();
             BeginContext(1520, 184, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8c9af1bdb64463d9a292d05ec28d49f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "17a483b5b5b341778e628ba130ce18e7", async() => {
                 BeginContext(1653, 47, true);
                 WriteLiteral("\r\n                Create New Role\r\n            ");
                 EndContext();

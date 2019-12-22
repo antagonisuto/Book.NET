@@ -1,9 +1,14 @@
 ﻿<Properties StartupConfiguration="{125159E4-0255-4563-A1B1-409A906A450C}|Default">
   <MonoDevelop.Ide.ItemProperties.FinalProject PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FinalProject/Views/BooksHaveAuthors/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FinalProject/Controllers/BooksHaveAuthorsController.cs">
     <Files>
-      <File FileName="FinalProject/Views/BooksInventory/Index.cshtml" Line="33" Column="21" />
-      <File FileName="FinalProject/Views/BooksHaveAuthors/Index.cshtml" Line="37" Column="97" />
+      <File FileName="FinalProject/Views/BooksHaveAuthors/Update.cshtml" Line="13" Column="32" />
+      <File FileName="FinalProject/Views/Books/Update.cshtml" Line="19" Column="1" />
+      <File FileName="FinalProject/Views/Publishers/Update.cshtml" Line="23" Column="1" />
+      <File FileName="FinalProject/Views/Main/Index.cshtml" Line="22" Column="24" />
+      <File FileName="FinalProject/Views/Books/Index.cshtml" Line="26" Column="23" />
+      <File FileName="FinalProject/Views/BooksHaveAuthors/Index.cshtml" Line="40" Column="1" />
+      <File FileName="FinalProject/Controllers/BooksHaveAuthorsController.cs" Line="134" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,13 +16,14 @@
           <Node name="FinalProject" expanded="True">
             <Node name="FinalProject" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="BooksHaveAuthorsController.cs" selected="True" />
+              </Node>
+              <Node name="Data" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="BooksHaveAuthors" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
-                <Node name="BooksInventory" expanded="True" />
-                <Node name="Shared" expanded="True" />
+                <Node name="Books" expanded="True" />
+                <Node name="BooksHaveAuthors" expanded="True" />
+                <Node name="Register" expanded="True" />
                 <Node name="Userss" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True" />

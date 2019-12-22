@@ -11,27 +11,31 @@
         
 <div class="card-columns">
 
-            @foreach (var p in Model)
-            {
+            @foreach (var p in Model){
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">@p.Book_title</h5>
             <p class="card-text">@p.Book_shortDec</p>
             <p class="text-warning">@p.Book_page pages</p>
             <div class="d-flex align-items-center">
-
+                 @if (!this.User.IsInRole("User"))
+                 {
                     <a class="btn btn-sm btn-outline-secondary" asp-action="Update" asp-route-id="@p.Book_id" style="margin-right:10px">Update</a>
                     <form asp-action="Delete" method="post" asp-route-id="@p.Book_id"> <button  class="btn btn-sm btn-outline-danger" style="margin-right:80px"> Delete</button></form>
-
+                 }
                 <small class="text-muted">writen: @string.Format("{0:MM/dd/yy}", p.Book_pub)</small>
             </div>
         </div>
     </div>
             }
 
-<div class="card" style="padding:15%">
-    <div class="card-body text-center">
-        <a asp-action="Create" class="text-info font-weight-bold">Create</a>
-    </div>
-</div>
+
+     @if (!this.User.IsInRole("User"))
+     {
+        <div class="card" style="padding:15%">
+            <div class="card-body text-center">
+                <a asp-action="Create" class="text-info font-weight-bold">Create</a>
+            </div>
+        </div>
+     }
 </div>

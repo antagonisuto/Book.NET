@@ -6,42 +6,54 @@
     ViewData["Title"] = title;
 }
 
-<h3 class="text-center text-info">Our Lovely Members</h3>
-<div class="container justify-content-md-center" style="margin-left:25%; margin-top:2%">
-    <table class="table table-borderless">
-        <thead>
-            <tr>
-                <th scope="col">Author Name</th>
-                <th scope="col">Modification</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model == null)
-            {
-                <tr><td colspan="7" class="text-center">No Model Data</td></tr>
-            }
-            else
-            {
+<h3 class="text-center text-info">Our Lovely Authors</h3>
+@if (!this.User.IsInRole("User")){
+    <div class="container justify-content-md-center" style="margin-left:25%; margin-top:2%">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">Author Name</th>
+
+                    <th scope="col">Modification</th>
+                </tr>
+            </thead>
+            <tbody>
+
                 @foreach (var p in Model)
                 {
-                <tr>
-                    <td>@p.Author_name</td>
+                    <tr>
+                        <td>@p.Author_name</td>
 
-                    <td>
-                        <div class="d-flex align-items-center">
+                        <td>
+                            <div class="d-flex align-items-center">
 
-                            <a class="btn btn-sm btn-outline-secondary" asp-action="Update" asp-route-id="@p.Author_id" style="margin-right:10px">Update</a>
-                            <form asp-action="Delete" method="post" asp-route-id="@p.Author_id">
-                                <button class="btn btn-sm btn-outline-danger" style="margin-right:80px"> Delete</button>
-                            </form>
+                                <a class="btn btn-sm btn-outline-secondary" asp-action="Update" asp-route-id="@p.Author_id" style="margin-right:10px">Update</a>
+                                <form asp-action="Delete" method="post" asp-route-id="@p.Author_id">
+                                    <button class="btn btn-sm btn-outline-danger" style="margin-right:80px"> Delete</button>
+                                </form>
 
-                        </div>
-                    </td>
-                </tr>
+                            </div>
+                        </td>
+                    </tr>
                 }
-            }
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
 
-<a asp-action="Create" class="btn btn-outline-info" style="margin-left:39%; margin-top:5%; width:250px">Create New Member</a>
+    <a asp-action="Create" class="btn btn-outline-info" style="margin-left:39%; margin-top:5%; width:250px">Create New Author</a>
+
+} else {
+
+    <div class="card-columns">
+        @foreach (var p in Model)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@p.Author_name</h5>
+                    <div class="d-flex align-items-center">
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+}

@@ -55,7 +55,7 @@ namespace FinalProject.Controllers
 
             if (Book_id == null || Authors_id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Index));
             }
 
             var BHA = await _service.GetById((string)Book_id, (string)Authors_id);

@@ -2,11 +2,11 @@
 
 @{
     Layout = "_Layout";
-    var title = "READ BooksHaveAuthors";
+    var title = "Authors of Books";
     ViewData["Title"] = title;
 }
 
-<h3 class="text-center text-info">Our Lovely Members</h3>
+<h3 class="text-center text-info">@title</h3>
 <div class="container justify-content-md-center" style="margin-left:15%; margin-top:2%">
 
 
@@ -40,7 +40,7 @@
 
                         </div>
                         <div class="btn btn-sm btn-outline-danger" style="margin-right:10px">
-                            @Html.ActionLink("Delete", "Delete", new { id1 = item.Book_id, id2 = item.Author_id })
+                            @Html.ActionLink("Delete", "Delete", new { Book_id = item.Book_id, Author_id= item.Author_id })
                             </div>
                     </td>
                 </tr>

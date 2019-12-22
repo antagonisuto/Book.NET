@@ -31,6 +31,11 @@ namespace FinalProject.Services.Userss
             return await _userRepo.GetByID(Id);
         }
 
+        public async Task<Models.Userss>GetByEmail(string Email)
+        {
+            return await _userRepo.GetByEmail(Email);
+        }
+
         public async Task AddAndSave(Models.Userss user)
         {
             _userRepo.Add(user);

@@ -48,6 +48,7 @@ namespace FinalProject.Controllers
             return View(room);
         }
 
+        [Authorize(Roles = "Admin,Manager")]
         // GET: Rooms/Create
         public IActionResult Create()
         {
@@ -70,7 +71,7 @@ namespace FinalProject.Controllers
         }
 
         // GET: Rooms/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Update(string id)
         {
             if (id == null)
             {
@@ -90,7 +91,7 @@ namespace FinalProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Pub_id,Pub_name")] Publishers room)
+        public async Task<IActionResult> Update(string id, [Bind("Pub_id,Pub_name")] Publishers room)
         {
             if (id != room.Pub_id)
             {

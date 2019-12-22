@@ -73,7 +73,7 @@ namespace FinalProject.Controllers
 
             //ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Answers.UserId);
             //ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question", user_Answers.SurveyId);
-           // ViewData["Pub_id"] = new SelectList(await _booksService.GetAllPublishers(), "Pub_id", "Pub_name", equipment.Pub_id);
+           ViewData["Pub_id"] = new SelectList(await _booksService.GetAllPublishers(), "Pub_id", "Pub_name", equipment.Pub_id);
             return View(equipment);
         }
 
@@ -96,7 +96,7 @@ namespace FinalProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(string id, [Bind("Pub_id,Pub_name")] Books author)
+        public async Task<IActionResult> Update(string id, [Bind("Book_id,Book_title,Book_page,Book_pub,Book_shortDec,Book_dec,Pub_id")] Books author)
         {
             if (id != author.Book_id)
             {

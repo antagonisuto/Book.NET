@@ -1,36 +1,61 @@
 ﻿@{
     Layout = "_Layout";
-    var title = "READ Publishers";
+    var title = "Our Publishers";
     ViewData["Title"] = title;
 }
 
-<h2>@title</h2>
+<h3 class="text-center text-info">@title</h3>
+@if (!this.User.IsInRole("User"))
+{
+    <div class="container justify-content-md-center" style="margin-left:15%; margin-top:2%">
 
-<h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>
-<table class="table table-bordered table-sm table-striped">
-    <thead>
-        <tr><th>Id</th><th>Name</th><th>Update</th><th>Delete</th></tr>
-    </thead>
-    <tbody>
-        @if (Model == null)
-        {
-            <tr><td colspan="7" class="text-center">No Model Data</td></tr>
-        }
-        else
-        {
-            @foreach (var p in Model)
-            {
+
+        <table class="table table-borderless">
+            <thead>
                 <tr>
-                    <td>@p.Pub_id</td>
-                    <td>@p.Pub_name</td>
-                    <td><a asp-action="Update" asp-route-id="@p.Pub_id">Update</a></td>
-                    <td>
-                        <form asp-action="Delete" method="post" asp-route-id="@p.Pub_id">
-                            <button>Delete</button>
-                        </form>
-                    </td>
+                    <th scope="col">
+                        Publisher Name
+                    </th>
+                    <th scope="col">
+                        Modification
+                    </th>
                 </tr>
-            }
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.Pub_name</td>
+
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <a class="btn btn-sm btn-outline-secondary" style="margin-right:10px" asp-action="Update" asp-route-id="@p.Pub_id">Update</a>
+                                <form asp-action="Delete" method="post" asp-route-id="@p.Pub_id">
+                                    <button class="btn btn-sm btn-outline-danger" style="margin-right:10px">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+}
+else
+{
+    <div class="card-columns">
+        @foreach (var p in Model)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@p.Pub_name</h5>
+                    <div class="d-flex align-items-center">
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table> 
+    </div>
+
+}

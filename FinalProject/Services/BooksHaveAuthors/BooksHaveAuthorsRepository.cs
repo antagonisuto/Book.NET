@@ -41,7 +41,7 @@ namespace FinalProject.Services.BooksHaveAuthors
 
         public async Task<Models.BooksHaveAuthors> GetByID(string Book_id, string Author_id)
         {
-            return await context.BooksHaveAuthors.Include(c => c.Book).Include(c => c.Authors).FirstOrDefaultAsync(e => e.Book_id == Book_id && e.Author_id == Author_id);
+            return await context.BooksHaveAuthors.Include(c => c.Book).Include(d => d.Authors).FirstOrDefaultAsync(e => e.Book_id == Book_id && e.Author_id == Author_id);
         }
 
         public Task Save()

@@ -55,3 +55,4 @@
 /Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/Razor/Views/Administration/EditUsersInRole.cshtml.g.cs
 /Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/Razor/Views/Administration/ListRoles.cshtml.g.cs
 /Users/madina/Projects/FinalProject/FinalProject/bin/Debug/netcoreapp2.1/libman.json
+/Users/madina/Projects/FinalProject/FinalProject/obj/Debug/netcoreapp2.1/Razor/Views/Register/Register.cshtml.g.cs

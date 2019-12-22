@@ -39,6 +39,11 @@ namespace FinalProject.Services.Userss
             return await context.Userss.FirstOrDefaultAsync(m => m.Id == Id);
         }
 
+        public async Task<Models.Userss> GetByEmail(string Email)
+        {
+            return await context.Userss.FirstOrDefaultAsync(m => m.Email == Email);
+        }
+
         public Task Save()
         {
             return context.SaveChangesAsync();

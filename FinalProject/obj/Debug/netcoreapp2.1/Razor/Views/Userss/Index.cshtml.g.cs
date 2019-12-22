@@ -133,7 +133,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("</td>\r\n\r\n\r\n                        <td>\r\n                            <div class=\"d-flex align-items-center\">\r\n\r\n                                ");
             EndContext();
             BeginContext(1024, 121, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "712dd862d2784f649a90d389cab4106a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7cbff30dd8864847a907547bd32fbc2f", async() => {
                 BeginContext(1135, 6, true);
                 WriteLiteral("Update");
                 EndContext();
@@ -170,7 +170,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(1179, 229, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7d8d52174a9743e9b109ab54270af9b2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c8973dbc41f54b1a970160d1787b31e4", async() => {
                 BeginContext(1240, 161, true);
                 WriteLiteral(" \r\n                                    <button class=\"btn btn-sm btn-outline-danger\" style=\"margin-right:80px\"> Delete</button>\r\n                                ");
                 EndContext();
@@ -223,7 +223,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("        </tbody>\r\n    </table>\r\n</div>\r\n\r\n");
             EndContext();
             BeginContext(1643, 125, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7630e5219ba34246a3c2b173d5f9fe30", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dcee43d2bb8b45c7b7d269c2079810de", async() => {
                 BeginContext(1747, 17, true);
                 WriteLiteral("Create New Member");
                 EndContext();

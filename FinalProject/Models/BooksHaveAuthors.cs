@@ -10,7 +10,6 @@ namespace FinalProject.Models
         public virtual Books Book { get; set; }
 
         public string Author_id { get; set; }
-
         [ForeignKey("Author_id")]
         public virtual Authors Authors { get; set; }
     }

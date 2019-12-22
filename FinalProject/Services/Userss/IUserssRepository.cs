@@ -9,6 +9,7 @@ namespace FinalProject.Services.Userss
     {
         Task<List<Models.Userss>> GetAll();
         Task<Models.Userss> GetByID(string Id);
+        Task<Models.Userss> GetByEmail(string Email);
         void Add(Models.Userss equipment);
         void Delete(string Id);
         void Update(Models.Userss equipment);
